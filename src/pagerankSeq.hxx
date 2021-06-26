@@ -38,7 +38,7 @@ void pagerankCalculate(vector<T>& a, const vector<T>& c, const vector<int>& vfro
 
 
 template <class T>
-int pagerankMonolithicLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int N, T p, T E, int L) {
+int pagerankSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int N, T p, T E, int L) {
   T  c0 = (1-p)/N;
   int l = 1;
   for (; l<L; l++) {
@@ -59,7 +59,7 @@ int pagerankMonolithicLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vecto
 // @param o options {damping=0.85, tolerance=1e-6, maxIterations=500}
 // @returns {ranks, iterations, time}
 template <class G, class H, class T=float>
-PagerankResult<T> pagerankMonolithic(const G& x, const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
+PagerankResult<T> pagerankSeq(const G& x, const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
   T    p = o.damping;
   T    E = o.tolerance;
   int  L = o.maxIterations, l;
@@ -75,7 +75,7 @@ PagerankResult<T> pagerankMonolithic(const G& x, const H& xt, const vector<T> *q
     if (q) r = compressContainer(xt, *q, ks);
     else fill(r, T(1)/N);
     mark([&] { pagerankFactor(f, vdata, 0, N, p); });
-    mark([&] { l = pagerankMonolithicLoop(a, r, c, f, vfrom, efrom, 0, N, N, p, E, L); });
+    mark([&] { l = pagerankSeqLoop(a, r, c, f, vfrom, efrom, 0, N, N, p, E, L); });
   }, o.repeat);
   return {decompressContainer(xt, a, ks), l, t};
 }

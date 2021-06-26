@@ -9,4 +9,4 @@
 #include "components.hxx"
 #include "topologicalSort.hxx"
 #include "pagerank.hxx"
-#include "pagerankMonolithic.hxx"
+#include "pagerankSeq.hxx"

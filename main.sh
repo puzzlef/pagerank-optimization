@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-src="pagerank-levelwise-static-vs-dynamic-with-mtx-insertions"
+src="pagerank-optimization-split-components"
 out="/home/resources/Documents/subhajit/$src.log"
 ulimit -s unlimited
 printf "" > "$out"
