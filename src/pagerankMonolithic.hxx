@@ -13,6 +13,14 @@ using std::swap;
 
 
 
+template <class G, class H, class T>
+auto pagerankComponents(const G& x, const H& xt, const PagerankOptions<T>& o) {
+  if (o.sortComponents) return sortedComponents(x, xt);
+  else if (o.splitComponents) return components(x, xt);
+  return vector2d<int> {vertices(xt)};
+}
+
+
 template <class T>
 void pagerankFactor(vector<T>& a, const vector<int>& vdata, int i, int n, T p) {
   for (int u=i; u<i+n; u++) {
@@ -45,26 +53,29 @@ int pagerankMonolithicLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vecto
 
 
 // Find pagerank using a single thread (pull, CSR).
+// @param x  original graph
 // @param xt transpose graph, with vertex-data=out-degree
 // @param q initial ranks (optional)
 // @param o options {damping=0.85, tolerance=1e-6, maxIterations=500}
 // @returns {ranks, iterations, time}
-template <class H, class T=float>
-PagerankResult<T> pagerankMonolithic(const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
+template <class G, class H, class T=float>
+PagerankResult<T> pagerankMonolithic(const G& x, const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
   T    p = o.damping;
   T    E = o.tolerance;
   int  L = o.maxIterations, l;
-  auto vfrom = sourceOffsets(xt);
-  auto efrom = destinationIndices(xt);
-  auto vdata = vertexData(xt);
-  int  N     = xt.order();
+  int  N = xt.order();
+  auto cs    = pagerankComponents(x, xt, o);
+  auto ks    = join(cs);
+  auto vfrom = sourceOffsets(xt, ks);
+  auto efrom = destinationIndices(xt, ks);
+  auto vdata = vertexData(xt, ks);
   vector<T> a(N), r(N), c(N), f(N);
   float t = measureDurationMarked([&](auto mark) {
     fill(a, T());
-    if (q) r = compressContainer(xt, *q);
+    if (q) r = compressContainer(xt, *q, ks);
     else fill(r, T(1)/N);
     mark([&] { pagerankFactor(f, vdata, 0, N, p); });
     mark([&] { l = pagerankMonolithicLoop(a, r, c, f, vfrom, efrom, 0, N, N, p, E, L); });
   }, o.repeat);
-  return {decompressContainer(xt, a), l, t};
+  return {decompressContainer(xt, a, ks), l, t};
 }
