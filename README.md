@@ -28,7 +28,24 @@ $ ./a.out ~/data/min-1DeadEnd.mtx
 $ ./a.out ~/data/min-2SCC.mtx
 $ ...
 
-# (SHORTENED)
+# ...
+#
+# Loading graph /home/subhajit/data/web-Stanford.mtx ...
+# order: 281903 size: 2312497 {}
+# order: 281903 size: 2312497 {} (transposeWithDegree)
+# [00401.425 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+# [00300.418 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [split]
+# [00298.443 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [split; sort]
+#
+# ...
+#
+# Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
+# order: 4847571 size: 68993773 {}
+# order: 4847571 size: 68993773 {} (transposeWithDegree)
+# [12306.131 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq
+# [11595.641 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [split]
+# [12254.420 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [split; sort]
+#
 # ...
 ```
 
