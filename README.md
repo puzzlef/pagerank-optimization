@@ -28,21 +28,35 @@ $ ...
 
 # ...
 #
-# Loading graph /home/subhajit/data/web-Stanford.mtx ...
-# order: 281903 size: 2312497 {}
-# order: 281903 size: 2312497 {} (transposeWithDegree)
-# [00401.425 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
-# [00300.418 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [split]
-# [00298.443 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [split; sort]
-#
-# ...
-#
 # Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
 # order: 4847571 size: 68993773 {}
 # order: 4847571 size: 68993773 {} (transposeWithDegree)
-# [12306.131 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq
-# [11595.641 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [split]
-# [12254.420 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [split; sort]
+# [11758.935 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
+# [11929.016 ms; 051 iters.] [5.4765e-09 err.] pagerankSeq [skip-check=2]
+# [11915.469 ms; 051 iters.] [4.9866e-09 err.] pagerankSeq [skip-check=3]
+# [11933.364 ms; 051 iters.] [9.5208e-09 err.] pagerankSeq [skip-check=4]
+# [11929.006 ms; 051 iters.] [1.5914e-08 err.] pagerankSeq [skip-check=6]
+# [11925.780 ms; 051 iters.] [1.9535e-08 err.] pagerankSeq [skip-check=8]
+# [11928.582 ms; 051 iters.] [5.3770e-08 err.] pagerankSeq [skip-check=11]
+# [11936.512 ms; 051 iters.] [9.3082e-08 err.] pagerankSeq [skip-check=14]
+# [12292.967 ms; 051 iters.] [1.3980e-08 err.] pagerankSeq [skip-after=2]
+# [12328.237 ms; 051 iters.] [5.1652e-09 err.] pagerankSeq [skip-after=3]
+# [12313.705 ms; 051 iters.] [3.5257e-09 err.] pagerankSeq [skip-after=4]
+# [12321.404 ms; 051 iters.] [9.6918e-11 err.] pagerankSeq [skip-after=6]
+# [12326.011 ms; 051 iters.] [9.0026e-12 err.] pagerankSeq [skip-after=8]
+# [12307.333 ms; 051 iters.] [1.4921e-13 err.] pagerankSeq [skip-after=11]
+# [12334.150 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-after=14]
+# [12290.369 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-after=17]
+# [12349.979 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-after=21]
+# [12283.471 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-after=25]
+# [12371.266 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-after=29]
+# [12305.829 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-after=33]
+# [12340.425 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-after=38]
+# [12329.927 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-after=43]
+# [12302.537 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-after=48]
+# [12344.922 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-after=53]
+# [12297.962 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-after=58]
+# [12339.748 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-after=63]
 #
 # ...
 ```
