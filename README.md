@@ -47,7 +47,7 @@ $ ...
 # ...
 ```
 
-[![](https://i.imgur.com/GidMlbg.png)][sheets]
+[![](https://i.imgur.com/lvB6ae7.png)][sheets]
 
 <br>
 <br>
