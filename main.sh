@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-src="pagerank-optimization-split-components"
+src="pagerank-optimization-skip-converged"
 out="/home/resources/Documents/subhajit/$src.log"
 ulimit -s unlimited
 printf "" > "$out"

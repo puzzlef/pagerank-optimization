@@ -20,7 +20,7 @@ struct PagerankOptions {
   T   tolerance;
   int maxIterations;
 
-  PagerankOptions(int repeat=1, bool skipCheck=0, bool skipAfter=0, T damping=0.85, T tolerance=1e-6, int maxIterations=500) :
+  PagerankOptions(int repeat=1, int skipCheck=0, int skipAfter=0, T damping=0.85, T tolerance=1e-6, int maxIterations=500) :
   repeat(repeat), skipCheck(skipCheck), skipAfter(skipAfter), damping(damping), tolerance(tolerance), maxIterations(maxIterations) {}
 };
 

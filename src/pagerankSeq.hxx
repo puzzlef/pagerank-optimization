@@ -22,6 +22,15 @@ auto pagerankComponents(const G& x, const H& xt, const PagerankOptions<T>& o) {
 
 
 template <class T>
+T pagerankTeleport(const vector<T>& r, const vector<int>& vdata, int i, int n, int N, T p) {
+  T a = (1-p)/N;
+  for (int v=i; v<i+n; v++)
+    if (vdata[v] == 0) a += p*r[v]/N;
+  return a;
+}
+
+
+template <class T>
 void pagerankFactor(vector<T>& a, const vector<int>& vdata, int i, int n, T p) {
   for (int u=i; u<i+n; u++) {
     int d = vdata[u];
@@ -58,10 +67,10 @@ void pagerankCalculate(vector<T>& a, vector<int>& s, const vector<T>& r, const v
 
 
 template <class T>
-int pagerankSeqLoop(vector<T>& a, vector<T>& r, vector<int>& s, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int N, T p, T E, int L, int SC, int SA) {
-  T  c0 = (1-p)/N;
+int pagerankSeqLoop(vector<T>& a, vector<T>& r, vector<int>& s, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int i, int n, int N, T p, T E, int L, int SC, int SA) {
   int l = 1;
   for (; l<L; l++) {
+    T c0 = pagerankTeleport(r, vdata, 0, N, N, p);
     multiply(c, r, f, i, n);
     if (SC>0) pagerankCalculate(a, r, c, vfrom, efrom, i, n, l, SC, c0);
     else if (SA>0) pagerankCalculate(a, s, r, c, vfrom, efrom, i, n, SA, c0);
@@ -98,7 +107,7 @@ PagerankResult<T> pagerankSeq(const H& xt, const vector<T> *q=nullptr, PagerankO
     else fill(r, T(1)/N);
     fill(s, int());
     mark([&] { pagerankFactor(f, vdata, 0, N, p); });
-    mark([&] { l = pagerankSeqLoop(a, r, s, c, f, vfrom, efrom, 0, N, N, p, E, L, SC, SA); });
+    mark([&] { l = pagerankSeqLoop(a, r, s, c, f, vfrom, efrom, vdata, 0, N, N, p, E, L, SC, SA); });
   }, o.repeat);
   return {decompressContainer(xt, a), l, t};
 }
