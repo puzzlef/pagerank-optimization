@@ -1,24 +1,22 @@
-Performance of **static** vs **dynamic** [levelwise] PageRank ([pull], [CSR],
-[skip-teleport], [compute-10], [skip-comp], [scaled-fill]).
+Performance benefit of PageRank with vertices **split by components** ([pull], [CSR]).
 
 This experiment was for comparing performance between:
-1. Find **static** [monolithic] pagerank of updated graph.
-2. Find **dynamic** [monolithic] pagerank of updated graph.
-3. Find **static** [levelwise] pagerank of updated graph.
-4. Find **dynamic** [levelwise] pagerank of updated graph.
+1. Find pagerank **without optimization**.
+2. Find pagerank with vertices **split by components**.
+3. Find pagerank with components **sorted in topological order**.
 
-Each approach was attempted on a number of graphs, running each with multiple
-batch sizes (`1`, `5`, `10`, `50`, ...). Each batch size was run with 5
-different updates to graph, and each specific update was run 5 times for each
-approach to get a good time measure. **Levelwise** pagerank is the
-[STIC-D algorithm], without **ICD** optimizations (using single-thread).
-Indeed, **dynamic levelwise** pagerank is **faster** than the *static* approach
-for many batch sizes.
+Each approach was attempted on a number of graphs, running each approach 5
+times to get a good time measure. On an few graphs, **splitting vertices by**
+**components** provides a **speedup**, but *sorting components in*
+*topological order* provides *no additional speedup*. For road networks, like
+`germany_osm` which only have *one component*, the speedup is possibly because
+of the *vertex reordering* caused by `dfs()` which is required for splitting
+by components.
 
 All outputs are saved in [out](out/) and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
-the [SuiteSparse Matrix Collection]. For previous experiments, see [branches].
+the [SuiteSparse Matrix Collection].
 
 <br>
 
@@ -49,7 +47,7 @@ $ ...
 # ...
 ```
 
-[![](https://i.imgur.com/GXjAjZW.gif)][sheets]
+[![](https://i.imgur.com/GidMlbg.png)][sheets]
 
 <br>
 <br>
@@ -64,19 +62,12 @@ $ ...
 <br>
 <br>
 
-[![](https://i.imgur.com/pH5CTr2.jpg)](https://www.youtube.com/watch?v=rskLxOHNF3k)
+[![](https://i.imgur.com/z8RKUMF.jpg)](https://www.youtube.com/watch?v=ocTgFXPnTgQ)
 
-[SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 [STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
+[SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 ["graphs"]: https://github.com/puzzlef/graphs
-[monolithic]: https://github.com/puzzlef/pagerank-monolithic-vs-levelwise
-[levelwise]: https://github.com/puzzlef/pagerank-monolithic-vs-levelwise
 [pull]: https://github.com/puzzlef/pagerank-push-vs-pull
 [CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
-[skip-teleport]: https://github.com/puzzlef/pagerank-levelwise-skip-teleport
-[compute-10]: https://github.com/puzzlef/pagerank-levelwise-adjust-compute-size
-[skip-comp]: https://github.com/puzzlef/pagerank-levelwise-dynamic-validate-skip-unchanged-components
-[scaled-fill]: https://github.com/puzzlef/pagerank-dynamic-adjust-ranks
-[branches]: https://github.com/puzzlef/pagerank-monolithic-vs-levelwise/branches
-[charts]: https://photos.app.goo.gl/cvr79cUjgicXM5KDA
-[sheets]: https://docs.google.com/spreadsheets/d/1sQ1FXmv9rc2liBxnB-2Qf_rfJVZQWKiO_5AO7hu1Rl0/edit?usp=sharing
+[charts]: https://photos.app.goo.gl/HqQHJ2twRK7Ge1Xc6
+[sheets]: https://docs.google.com/spreadsheets/d/1YmY_KYo9cDe2YCuwTgiiT0fFnyPS9-WScDIO9n-zRSY/edit?usp=sharing
