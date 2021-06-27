@@ -1,17 +1,16 @@
-Performance benefit of PageRank with vertices **split by components** ([pull], [CSR]).
+Performance benefit of **skipping in-identical vertices** for PageRank ([pull], [CSR]).
 
 This experiment was for comparing performance between:
 1. Find pagerank **without optimization**.
-2. Find pagerank with vertices **split by components**.
-3. Find pagerank with components **sorted in topological order**.
+2. Find pagerank **skipping rank calculation of in-identical vertices**.
 
 Each approach was attempted on a number of graphs, running each approach 5
-times to get a good time measure. On an few graphs, **splitting vertices by**
-**components** provides a **speedup**, but *sorting components in*
-*topological order* provides *no additional speedup*. For road networks, like
-`germany_osm` which only have *one component*, the speedup is possibly because
-of the *vertex reordering* caused by `dfs()` which is required for splitting
-by components.
+times to get a good time measure. On `indochina-2004` graph, **skipping**
+**in-identicals** provides a **speedup** of `~1.8`, but on average provides
+*no speedup* for other graphs. This could be due to the fact that the graph
+`indochina-2004` has a large number of **inidenticals** and **inidentical**
+**groups**. Although, it doesnt have the highest **inidentials %** or the
+highest **avg. inidentical group size**, so i am not so sure.
 
 All outputs are saved in [out](out/) and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
@@ -47,7 +46,12 @@ $ ...
 # ...
 ```
 
-[![](https://i.imgur.com/lvB6ae7.png)][sheets]
+[![](https://i.imgur.com/Cjq3BKI.png)][sheets]
+[![](https://i.imgur.com/RI0Q7ES.png)][sheets]
+[![](https://i.imgur.com/ekeZyhE.png)][sheets]
+[![](https://i.imgur.com/kOmJCOM.png)][sheets]
+[![](https://i.imgur.com/eIvOCUz.png)][sheets]
+[![](https://i.imgur.com/lInkJTo.png)][sheets]
 
 <br>
 <br>
@@ -62,12 +66,12 @@ $ ...
 <br>
 <br>
 
-[![](https://i.imgur.com/z8RKUMF.jpg)](https://www.youtube.com/watch?v=ocTgFXPnTgQ)
+[![](https://i.imgur.com/Z7oiZSS.jpg)](https://www.youtube.com/watch?v=rKv_l1RnSqs)
 
 [STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
 [SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 ["graphs"]: https://github.com/puzzlef/graphs
 [pull]: https://github.com/puzzlef/pagerank-push-vs-pull
 [CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
-[charts]: https://photos.app.goo.gl/HqQHJ2twRK7Ge1Xc6
-[sheets]: https://docs.google.com/spreadsheets/d/1YmY_KYo9cDe2YCuwTgiiT0fFnyPS9-WScDIO9n-zRSY/edit?usp=sharing
+[charts]: https://photos.app.goo.gl/8xjqrsB6jqFAxGWF7
+[sheets]: https://docs.google.com/spreadsheets/d/1FyOjUSpAlpZdx1Pf0DzzS2gzkv9aU8HJtLsW8XkITrs/edit?usp=sharing
