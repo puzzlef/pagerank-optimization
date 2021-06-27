@@ -17,21 +17,23 @@ using std::abs;
 
 
 template <class G, class H, class T>
-auto pagerankIdenticalsRoot(const G& x, const H& xt, const PagerankOptions<T>& o) {
-  if (!o.skipInidenticals) return vector<int>(xt.order());
-  auto is    = inIdenticals(x, xt);
-  auto vroot = createContainer(xt, int());
-  for (const auto& vs : is) {
-    for (int v : slice(vs, 1))
-      vroot[v] = vs[0]+1;
+auto pagerankIdenticals(const G& x, const H& xt, const PagerankOptions<T>& o) {
+  if (!o.skipInidenticals) return vector2d<int>();
+  auto id = indices(xt.vertices());
+  auto a  = inIdenticals(x, xt);
+  for (auto& vs : a) {
+    for (int i=0; i<vs.size(); i++)
+      vs[i] = id[vs[i]];
   }
-  return compressContainer(xt, vroot);
+  return a;
 }
 
 
-void pagerankMarkIdenticals(vector<int>& vfrom, const vector<int>& vroot) {
-  for (int i=0; i<vroot.size(); i++)
-    if (vroot[i] > 0) vfrom[i] = -vfrom[i];
+void pagerankMarkIdenticals(vector<int>& vfrom, const vector2d<int>& is) {
+  for (const auto& vs : is) {
+    for (int i=1; i<vs.size(); i++)
+      vfrom[vs[i]] = -abs(vfrom[vs[i]]);
+  }
 }
 
 
@@ -63,20 +65,22 @@ void pagerankCalculate(vector<T>& a, const vector<T>& c, const vector<int>& vfro
 
 
 template <class T>
-void pagerankCalculateIdenticals(vector<T>& a, const vector<int>& vroot, int i, int n) {
-  for (int v=i; v<i+n; v++)
-    if (vroot[v] > 0) a[v] = a[vroot[v]-1];
+void pagerankCalculateIdenticals(vector<T>& a, const vector2d<int>& is) {
+  for (const auto& vs : is) {
+    for (int i=1; i<vs.size(); i++)
+      a[vs[i]] = a[vs[0]];
+  }
 }
 
 
 template <class T>
-int pagerankSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, const vector<int>& vroot, int i, int n, int N, T p, T E, int L) {
+int pagerankSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, const vector2d<int>& is, int i, int n, int N, T p, T E, int L) {
   int l = 1;
   for (; l<L; l++) {
     T c0 = pagerankTeleport(r, vdata, i, n, N, p);
     multiply(c, r, f, i, n);
     pagerankCalculate(a, c, vfrom, efrom, i, n, c0);
-    pagerankCalculateIdenticals(a, vroot, i, n);
+    pagerankCalculateIdenticals(a, is);
     T el = l1Norm(a, r, i, n);
     if (el < E) break;
     swap(a, r);
@@ -93,22 +97,22 @@ int pagerankSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f
 // @returns {ranks, iterations, time}
 template <class G, class H, class T=float>
 PagerankResult<T> pagerankSeq(const G& x, const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
+  int  N = xt.order();
   T    p = o.damping;
   T    E = o.tolerance;
   int  L = o.maxIterations, l;
-  int  N = xt.order();
   auto vfrom = sourceOffsets(xt);
   auto efrom = destinationIndices(xt);
   auto vdata = vertexData(xt);
-  auto vroot = pagerankIdenticalsRoot(x, xt, o);
-  pagerankMarkIdenticals(vfrom, vroot);
+  auto is    = pagerankIdenticals(x, xt, o);
+  pagerankMarkIdenticals(vfrom, is);
   vector<T> a(N), r(N), c(N), f(N);
   float t = measureDurationMarked([&](auto mark) {
     fill(a, T());
     if (q) r = compressContainer(xt, *q);
     else fill(r, T(1)/N);
     mark([&] { pagerankFactor(f, vdata, 0, N, p); });
-    mark([&] { l = pagerankSeqLoop(a, r, c, f, vfrom, efrom, vdata, vroot, 0, N, N, p, E, L); });
+    mark([&] { l = pagerankSeqLoop(a, r, c, f, vfrom, efrom, vdata, is, 0, N, N, p, E, L); });
   }, o.repeat);
   return {decompressContainer(xt, a), l, t};
 }
