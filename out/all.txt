@@ -1,0 +1,146 @@
+Loading graph /home/subhajit/data/min-1DeadEnd.mtx ...
+order: 5 size: 6 {}
+order: 5 size: 6 {} (transposeWithDegree)
+chains: 1 chain-vertices: 1 {}
+[00000.002 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq
+[00000.002 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/min-2SCC.mtx ...
+order: 8 size: 12 {}
+order: 8 size: 12 {} (transposeWithDegree)
+chains: 2 chain-vertices: 3 {}
+[00000.011 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq
+[00000.019 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/min-4SCC.mtx ...
+order: 21 size: 35 {}
+order: 21 size: 35 {} (transposeWithDegree)
+chains: 1 chain-vertices: 1 {}
+[00000.018 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq
+[00000.018 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/min-NvgraphEx.mtx ...
+order: 6 size: 10 {}
+order: 6 size: 10 {} (transposeWithDegree)
+chains: 0 chain-vertices: 0 {}
+[00000.003 ms; 024 iters.] [0.0000e+00 err.] pagerankSeq
+[00000.003 ms; 024 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/web-Stanford.mtx ...
+order: 281903 size: 2312497 {}
+order: 281903 size: 2312497 {} (transposeWithDegree)
+chains: 3618 chain-vertices: 3885 {}
+[00466.614 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+[00466.725 ms; 063 iters.] [1.6226e-09 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/web-BerkStan.mtx ...
+order: 685230 size: 7600595 {}
+order: 685230 size: 7600595 {} (transposeWithDegree)
+chains: 7748 chain-vertices: 8671 {}
+[00992.955 ms; 064 iters.] [0.0000e+00 err.] pagerankSeq
+[00991.747 ms; 064 iters.] [7.0226e-09 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/web-Google.mtx ...
+order: 916428 size: 5105039 {}
+order: 916428 size: 5105039 {} (transposeWithDegree)
+chains: 12381 chain-vertices: 12766 {}
+[01644.581 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq
+[01651.715 ms; 061 iters.] [2.9376e-09 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/web-NotreDame.mtx ...
+order: 325729 size: 1497134 {}
+order: 325729 size: 1497134 {} (transposeWithDegree)
+chains: 2100 chain-vertices: 2513 {}
+[00251.343 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq
+[00255.729 ms; 058 iters.] [1.3747e-08 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/soc-Slashdot0811.mtx ...
+order: 77360 size: 905468 {}
+order: 77360 size: 905468 {} (transposeWithDegree)
+chains: 5 chain-vertices: 5 {}
+[00099.146 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq
+[00100.073 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/soc-Slashdot0902.mtx ...
+order: 82168 size: 948464 {}
+order: 82168 size: 948464 {} (transposeWithDegree)
+chains: 4 chain-vertices: 4 {}
+[00110.586 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq
+[00110.956 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/soc-Epinions1.mtx ...
+order: 75888 size: 508837 {}
+order: 75888 size: 508837 {} (transposeWithDegree)
+chains: 736 chain-vertices: 751 {}
+[00087.163 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq
+[00089.586 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/coAuthorsDBLP.mtx ...
+order: 299067 size: 1955352 {}
+order: 299067 size: 1955352 {} (transposeWithDegree)
+chains: 0 chain-vertices: 0 {}
+[00278.427 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq
+[00275.719 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/coAuthorsCiteseer.mtx ...
+order: 227320 size: 1628268 {}
+order: 227320 size: 1628268 {} (transposeWithDegree)
+chains: 0 chain-vertices: 0 {}
+[00216.255 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq
+[00217.410 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
+order: 4847571 size: 68993773 {}
+order: 4847571 size: 68993773 {} (transposeWithDegree)
+chains: 15788 chain-vertices: 16297 {}
+[13037.498 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
+[12704.751 ms; 051 iters.] [5.1436e-11 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/coPapersCiteseer.mtx ...
+order: 434102 size: 32073440 {}
+order: 434102 size: 32073440 {} (transposeWithDegree)
+chains: 0 chain-vertices: 0 {}
+[02311.875 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
+[02312.174 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/coPapersDBLP.mtx ...
+order: 540486 size: 30491458 {}
+order: 540486 size: 30491458 {} (transposeWithDegree)
+chains: 0 chain-vertices: 0 {}
+[02235.539 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq
+[02221.298 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/indochina-2004.mtx ...
+order: 7414866 size: 194109311 {}
+order: 7414866 size: 194109311 {} (transposeWithDegree)
+chains: 110930 chain-vertices: 116156 {}
+[20475.445 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq
+[20528.547 ms; 061 iters.] [4.6359e-09 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/italy_osm.mtx ...
+order: 6686493 size: 14027956 {}
+order: 6686493 size: 14027956 {} (transposeWithDegree)
+chains: 0 chain-vertices: 0 {}
+[05309.630 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+[05319.858 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/great-britain_osm.mtx ...
+order: 7733822 size: 16313034 {}
+order: 7733822 size: 16313034 {} (transposeWithDegree)
+chains: 0 chain-vertices: 0 {}
+[08252.107 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq
+[07959.111 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/germany_osm.mtx ...
+order: 11548845 size: 24738362 {}
+order: 11548845 size: 24738362 {} (transposeWithDegree)
+chains: 0 chain-vertices: 0 {}
+[11933.621 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq
+[12271.636 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+
+Loading graph /home/subhajit/data/asia_osm.mtx ...
+order: 11950757 size: 25423206 {}
+order: 11950757 size: 25423206 {} (transposeWithDegree)
+chains: 0 chain-vertices: 0 {}
+[09018.415 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+[09242.663 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip]

@@ -31,18 +31,18 @@ $ ...
 # Loading graph /home/subhajit/data/web-Stanford.mtx ...
 # order: 281903 size: 2312497 {}
 # order: 281903 size: 2312497 {} (transposeWithDegree)
-# [00441.055 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
-# [00333.251 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [split]
-# [00331.664 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [split; sort]
+# chains: 3618 chain-vertices: 3885 {}
+# [00466.614 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+# [00466.725 ms; 063 iters.] [1.6226e-09 err.] pagerankSeq [skip]
 #
 # ...
 #
 # Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
 # order: 4847571 size: 68993773 {}
 # order: 4847571 size: 68993773 {} (transposeWithDegree)
-# [11715.982 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
-# [11447.048 ms; 051 iters.] [4.5725e-09 err.] pagerankSeq [split]
-# [11474.953 ms; 051 iters.] [4.5754e-09 err.] pagerankSeq [split; sort]
+# chains: 15788 chain-vertices: 16297 {}
+# [13037.498 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
+# [12704.751 ms; 051 iters.] [5.1436e-11 err.] pagerankSeq [skip]
 #
 # ...
 ```
