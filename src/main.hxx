@@ -6,7 +6,5 @@
 #include "mtx.hxx"
 #include "copy.hxx"
 #include "transpose.hxx"
-#include "components.hxx"
-#include "topologicalSort.hxx"
 #include "pagerank.hxx"
 #include "pagerankSeq.hxx"
