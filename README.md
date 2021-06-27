@@ -31,18 +31,18 @@ $ ...
 # Loading graph /home/subhajit/data/web-Stanford.mtx ...
 # order: 281903 size: 2312497 {}
 # order: 281903 size: 2312497 {} (transposeWithDegree)
-# [00441.055 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
-# [00333.251 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [split]
-# [00331.664 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [split; sort]
+# inidenticals: 80096 inidentical-groups: 13684 {}
+# [00442.164 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+# [00441.829 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 #
 # ...
 #
-# Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
-# order: 4847571 size: 68993773 {}
-# order: 4847571 size: 68993773 {} (transposeWithDegree)
-# [11715.982 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
-# [11447.048 ms; 051 iters.] [4.5725e-09 err.] pagerankSeq [split]
-# [11474.953 ms; 051 iters.] [4.5754e-09 err.] pagerankSeq [split; sort]
+# Loading graph /home/subhajit/data/indochina-2004.mtx ...
+# order: 7414866 size: 194109311 {}
+# order: 7414866 size: 194109311 {} (transposeWithDegree)
+# inidenticals: 3812336 inidentical-groups: 536482 {}
+# [20319.572 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq
+# [11503.846 ms; 061 iters.] [7.3308e-07 err.] pagerankSeq [skip]
 #
 # ...
 ```
