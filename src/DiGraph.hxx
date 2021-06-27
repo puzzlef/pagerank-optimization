@@ -21,17 +21,17 @@ class DiGraph {
   using TEdge   = E;
 
   private:
-  vector<int>  none;
-  vector<bool> vex;
+  vector<int>   none;
+  vector<bool>  vex;
   vector2d<int> vto;
-  vector2d<E> edata;
-  vector<V>         vdata;
+  vector2d<E>   edata;
+  vector<V>     vdata;
   int N = 0, M = 0;
 
   // Cute helpers
   private:
   int s() const { return vto.size(); }
-  int ei(int u, int v) const { return findIndex(vto[u], v); }
+  int ei(int u, int v) const { return findEqIndex(vto[u], v); }
 
   // Read operations
   public:
