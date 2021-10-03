@@ -15,7 +15,8 @@ have chains, but they are *bi-directional*, and thus not considered here.
 All outputs are saved in [out](out/) and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
-the [SuiteSparse Matrix Collection].
+the [SuiteSparse Matrix Collection]. This experiment was done with guidance
+from [Prof. Dip Sankar Banerjee] and [Prof. Kishore Kothapalli].
 
 <br>
 
@@ -46,12 +47,11 @@ $ ...
 # ...
 ```
 
-[![](https://i.imgur.com/L5ewgxL.png)][sheets]
-[![](https://i.imgur.com/SX60zWe.png)][sheets]
-[![](https://i.imgur.com/djiMI0l.png)][sheets]
-[![](https://i.imgur.com/3k5B4dt.png)][sheets]
-[![](https://i.imgur.com/o2dZ9AP.png)][sheets]
-[![](https://i.imgur.com/yI794gq.png)][sheets]
+[![](https://i.imgur.com/ocpNyOs.png)][sheetp]
+[![](https://i.imgur.com/R1QVC7D.png)][sheetp]
+[![](https://i.imgur.com/TgS8I4z.png)][sheetp]
+[![](https://i.imgur.com/aznJUSc.png)][sheetp]
+[![](https://i.imgur.com/xBrorxU.png)][sheetp]
 
 <br>
 <br>
@@ -68,6 +68,8 @@ $ ...
 
 [![](https://i.imgur.com/CB5t3WL.jpg)](https://www.youtube.com/watch?v=gUHejU7qyv8)
 
+[Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
+[Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
 [STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
 [SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 ["graphs"]: https://github.com/puzzlef/graphs
@@ -75,3 +77,4 @@ $ ...
 [CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
 [charts]: https://photos.app.goo.gl/MzFcwNV4JZL4vD1Z6
 [sheets]: https://docs.google.com/spreadsheets/d/1OduhKKKTMbsKY4LamQuy3EkFT7SiADyVBR4xRu-4CI0/edit?usp=sharing
+[sheetp]: https://docs.google.com/spreadsheets/d/e/2PACX-1vTkud1vbis8RhIIHZiboiejE9Rkuya3Uiz1WrSN3wkIXg7K6-foj9-2qxBuj8YBNNF7W2Gt8DOnzXAw/pubhtml
