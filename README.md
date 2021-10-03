@@ -6,17 +6,18 @@ This experiment was for comparing performance between:
 3. Find pagerank with components **sorted in topological order**.
 
 Each approach was attempted on a number of graphs, running each approach 5
-times to get a good time measure. On an few graphs, **splitting vertices by**
-**components** provides a **speedup**, but *sorting components in*
-*topological order* provides *no additional speedup*. For road networks, like
-`germany_osm` which only have *one component*, the speedup is possibly because
-of the *vertex reordering* caused by `dfs()` which is required for splitting
-by components.
+times to get a good time measure. On **road networks** and **web graphs**,
+**splitting vertices by components** provides a **speedup**, but *sorting*
+*components in topological order* provides *no additional speedup*. For road
+networks, like `germany_osm` which only have *one component*, the speedup is
+possibly because of the *vertex reordering* caused by `dfs()` which is required
+for splitting by components.
 
 All outputs are saved in [out](out/) and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
-the [SuiteSparse Matrix Collection].
+the [SuiteSparse Matrix Collection]. This experiment was done with guidance
+from [Prof. Dip Sankar Banerjee] and [Prof. Kishore Kothapalli].
 
 <br>
 
@@ -47,7 +48,8 @@ $ ...
 # ...
 ```
 
-[![](https://i.imgur.com/lvB6ae7.png)][sheets]
+[![](https://i.imgur.com/8oT4ZeQ.png)][sheetp]
+[![](https://i.imgur.com/vngyBjn.png)][sheetp]
 
 <br>
 <br>
@@ -64,6 +66,8 @@ $ ...
 
 [![](https://i.imgur.com/z8RKUMF.jpg)](https://www.youtube.com/watch?v=ocTgFXPnTgQ)
 
+[Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
+[Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
 [STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
 [SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 ["graphs"]: https://github.com/puzzlef/graphs
@@ -71,3 +75,4 @@ $ ...
 [CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
 [charts]: https://photos.app.goo.gl/HqQHJ2twRK7Ge1Xc6
 [sheets]: https://docs.google.com/spreadsheets/d/1YmY_KYo9cDe2YCuwTgiiT0fFnyPS9-WScDIO9n-zRSY/edit?usp=sharing
+[sheetp]: https://docs.google.com/spreadsheets/d/e/2PACX-1vTuCCFA1zalH4-a-N45W1pd-lUyi6IoqhHWfxRcxuGz2NZei034msrjcbisQ7oOKsa-8i4MWr3YClu-/pubhtml
