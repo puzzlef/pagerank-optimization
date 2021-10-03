@@ -8,16 +8,26 @@ This experiment was for comparing performance between:
 Each approach was attempted on a number of graphs, running each approach 5
 times to get a good time measure. **Skip with re-check** (`skip-check`) is
 done every `2`-`16` turns. **Skip after turns** (`skip-after`) is done after
-`2`-`64` turns. On average, *neither* `skip-check`, nor `skip-after` gives
-**better speed** than the **default (unoptimized) approach**. This could be
-due to the unnessary iterations added by `skip-check` (mistakenly skipped),
-and increased memory accesses performed by `skip-after` (tracking converged
-count).
+`2`-`64` turns.
+
+Results indicate that only the `skip-check` optimization is able to provide
+a time reduction in some cases (without introducing too much error).
+- For **web graphs**, a `skip-check` of `8`/`11` appears to work best.
+- For **social networks**, a `skip-check` of `3`/`11` (except for `soc-LiveJournal1`).
+- For **collaboration networks**, a `skip-check` of `2`/`11` (except for `coPapersDBLP`).
+- For **road networks**, `skip-check` provides no improvemnt.
+
+On average however, *neither* `skip-check`, nor `skip-after` gives
+**better speed** than the **default (unoptimized) approach** (considering
+the error introduced due to skipping). This could be due to the unnessary
+iterations added by `skip-check` (mistakenly skipped), and increased memory
+accesses performed by `skip-after` (tracking converged count).
 
 All outputs are saved in [out](out/) and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
-the [SuiteSparse Matrix Collection].
+the [SuiteSparse Matrix Collection]. This experiment was done with guidance
+from [Prof. Dip Sankar Banerjee] and [Prof. Kishore Kothapalli].
 
 <br>
 
@@ -62,10 +72,44 @@ $ ...
 # ...
 ```
 
-[![](https://i.imgur.com/HabTid9.gif)][sheets]
-[![](https://i.imgur.com/R8JBilv.gif)][sheets]
-[![](https://i.imgur.com/eqFrj7d.gif)][sheets]
-[![](https://i.imgur.com/pAC9diq.gif)][sheets]
+[![](https://i.imgur.com/cznle2v.png)][sheetp]
+[![](https://i.imgur.com/ZjI78Cs.png)][sheetp]
+[![](https://i.imgur.com/tQDyvmt.png)][sheetp]
+[![](https://i.imgur.com/YDfdPvT.png)][sheetp]
+[![](https://i.imgur.com/gYvoOrR.png)][sheetp]
+[![](https://i.imgur.com/ncwjqsF.png)][sheetp]
+[![](https://i.imgur.com/CM5O5xk.png)][sheetp]
+[![](https://i.imgur.com/K6xwix9.png)][sheetp]
+[![](https://i.imgur.com/pPFgvjv.png)][sheetp]
+[![](https://i.imgur.com/Zk1e6DK.png)][sheetp]
+[![](https://i.imgur.com/IHcNsnD.png)][sheetp]
+[![](https://i.imgur.com/JGsaF5V.png)][sheetp]
+[![](https://i.imgur.com/y5gM9gl.png)][sheetp]
+[![](https://i.imgur.com/ISK2Y2H.png)][sheetp]
+[![](https://i.imgur.com/NOR5AXd.png)][sheetp]
+[![](https://i.imgur.com/4t2DUj6.png)][sheetp]
+[![](https://i.imgur.com/HFj4ekD.png)][sheetp]
+[![](https://i.imgur.com/rbFw4qd.png)][sheetp]
+[![](https://i.imgur.com/OIDxgPG.png)][sheetp]
+[![](https://i.imgur.com/AU6ovly.png)][sheetp]
+[![](https://i.imgur.com/whPdc5q.png)][sheetp]
+[![](https://i.imgur.com/Pv23ADO.png)][sheetp]
+[![](https://i.imgur.com/UcVX2Iw.png)][sheetp]
+[![](https://i.imgur.com/uE4xgar.png)][sheetp]
+[![](https://i.imgur.com/ksKYoJu.png)][sheetp]
+[![](https://i.imgur.com/8XmbumX.png)][sheetp]
+[![](https://i.imgur.com/zqaiNHS.png)][sheetp]
+[![](https://i.imgur.com/2yyzkCe.png)][sheetp]
+[![](https://i.imgur.com/QMhUn6q.png)][sheetp]
+[![](https://i.imgur.com/nFZWD2W.png)][sheetp]
+[![](https://i.imgur.com/t8WY9Oh.png)][sheetp]
+[![](https://i.imgur.com/ayd3Hsy.png)][sheetp]
+[![](https://i.imgur.com/n2qsAWp.png)][sheetp]
+[![](https://i.imgur.com/2LK8Y9V.png)][sheetp]
+
+[![](https://i.imgur.com/6mwkqae.png)][sheetp]
+[![](https://i.imgur.com/nxLuCFX.png)][sheetp]
+[![](https://i.imgur.com/4mYngoh.png)][sheetp]
 
 <br>
 <br>
@@ -82,10 +126,13 @@ $ ...
 
 [![](https://i.imgur.com/KExwVG1.jpg)](https://www.youtube.com/watch?v=A7TKQKAFIi4)
 
-[STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
+[Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
+[Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
 [SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
+[STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
 ["graphs"]: https://github.com/puzzlef/graphs
 [pull]: https://github.com/puzzlef/pagerank-push-vs-pull
 [CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
 [charts]: https://photos.app.goo.gl/p6YDtgaxBgbMGSGx7
 [sheets]: https://docs.google.com/spreadsheets/d/1g8AkDolNHqvvabhX0KYIaOwc5h-lLRUnCgJ8an-uewQ/edit?usp=sharing
+[sheetp]: https://docs.google.com/spreadsheets/d/e/2PACX-1vRSPTTcoZOi7bscVuSxt3tZkv_6K7ruE8IMPaspO_blfKNdRltiujFrz3w2me1QVmbtA-aCvXNDNC6g/pubhtml
