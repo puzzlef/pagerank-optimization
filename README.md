@@ -9,13 +9,14 @@ times to get a good time measure. On `indochina-2004` graph, **skipping**
 **in-identicals** provides a **speedup** of `~1.8`, but on average provides
 *no speedup* for other graphs. This could be due to the fact that the graph
 `indochina-2004` has a large number of **inidenticals** and **inidentical**
-**groups**. Although, it doesnt have the highest **inidentials %** or the
-highest **avg. inidentical group size**, so i am not so sure.
+**groups**, although it doesnt have the highest **inidentials %** or the
+highest **avg. inidentical group size**.
 
 All outputs are saved in [out](out/) and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
 data used for this experiment is available at ["graphs"] (for small ones), and
-the [SuiteSparse Matrix Collection].
+the [SuiteSparse Matrix Collection]. This experiment was done with guidance
+from [Prof. Dip Sankar Banerjee] and [Prof. Kishore Kothapalli].
 
 <br>
 
@@ -46,12 +47,11 @@ $ ...
 # ...
 ```
 
-[![](https://i.imgur.com/Cjq3BKI.png)][sheets]
-[![](https://i.imgur.com/RI0Q7ES.png)][sheets]
-[![](https://i.imgur.com/ekeZyhE.png)][sheets]
-[![](https://i.imgur.com/kOmJCOM.png)][sheets]
-[![](https://i.imgur.com/eIvOCUz.png)][sheets]
-[![](https://i.imgur.com/lInkJTo.png)][sheets]
+[![](https://i.imgur.com/3Oxkf5S.png)][sheetp]
+[![](https://i.imgur.com/VxzsPvV.png)][sheetp]
+[![](https://i.imgur.com/3TECQBr.png)][sheetp]
+[![](https://i.imgur.com/RDSls8E.png)][sheetp]
+[![](https://i.imgur.com/ZspbF1F.png)][sheetp]
 
 <br>
 <br>
@@ -68,6 +68,8 @@ $ ...
 
 [![](https://i.imgur.com/Z7oiZSS.jpg)](https://www.youtube.com/watch?v=rKv_l1RnSqs)
 
+[Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
+[Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
 [STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
 [SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
 ["graphs"]: https://github.com/puzzlef/graphs
@@ -75,3 +77,4 @@ $ ...
 [CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
 [charts]: https://photos.app.goo.gl/8xjqrsB6jqFAxGWF7
 [sheets]: https://docs.google.com/spreadsheets/d/1FyOjUSpAlpZdx1Pf0DzzS2gzkv9aU8HJtLsW8XkITrs/edit?usp=sharing
+[sheetp]: https://docs.google.com/spreadsheets/d/e/2PACX-1vQd9LVv2chGd7pY6LtQXRcZL-HKKj3HvN6Z-VUulKmuxSFuSyWzwi_sawnNka0FLpff5SZaw98L4tTW/pubhtml
