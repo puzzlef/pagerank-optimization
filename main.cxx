@@ -13,14 +13,14 @@ template <class G, class H>
 void runPagerank(const G& x, const H& xt, int repeat) {
   vector<float> *init = nullptr;
 
-  // Find pagerank using C++ DiGraph class directly.
-  auto a1 = pagerankClass(xt, init, {repeat});
-  auto e1 = absError(a1.ranks, a1.ranks);
-  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankClass\n", a1.time, a1.iterations, e1);
+  // Find pagerank using plain power-iteration based PageRank.
+  auto a1 = pagerankPlain(x, xt, init, {repeat});
+  auto e1 = l1Norm(a1.ranks, a1.ranks);
+  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankPlain\n", a1.time, a1.iterations, e1);
 
-  // Find pagerank using CSR representation of DiGraph.
-  auto a2 = pagerankCsr(xt, init, {repeat});
-  auto e2 = absError(a2.ranks, a1.ranks);
+  // Find pagerank using power-iteration based PageRank with Aitken extrapolation.
+  auto a2 = pagerankAitken(xt, init, {repeat});
+  auto e2 = l1Norm(a2.ranks, a1.ranks);
   printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankCsr\n", a2.time, a2.iterations, e2);
 }
 
