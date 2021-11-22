@@ -1,4 +1,5 @@
 #pragma once
+#include <cmath>
 #include <vector>
 #include <algorithm>
 #include "_main.hxx"
@@ -9,6 +10,7 @@
 
 using std::vector;
 using std::swap;
+using std::abs;
 
 
 
@@ -19,11 +21,11 @@ using std::swap;
 
 template <class T>
 void pagerankAitkenCalculate(vector<T>& a, const vector<T>& r, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, T c0) {
-  const T DE = 1e-16;                            // if denominator smaller than this, dont use aitken interpolation!
+  const T DE = 1e-16;                                 // if denominator smaller than this, dont use aitken interpolation!
   for (int v=i; v<i+n; v++) {
     T x0 = a[v], x1 = r[v], x2 = c0 + sumAt(c, sliceIter(efrom, vfrom[v], vfrom[v+1]));
-    T de = (x2-x1) - (x1-x0);                    // aitken denominator
-    a[v] = de<DE? x2 : x2 - (x2-x1)*(x2-x1)/de;  // aitken interpolate, only if denominator not too small!
+    T de = (x2-x1) - (x1-x0);                         // aitken denominator
+    a[v] = abs(de)<DE? x2 : x2 - (x2-x1)*(x2-x1)/de;  // aitken interpolate, only if denominator not too small!
   }
 }
 
@@ -38,12 +40,12 @@ int pagerankAitkenLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>
   T  c0 = (1-p)/N;
   int l = 0;
   while (l<L) {
-    if (l%AS != 0) pagerankCalculate(a, c, vfrom, efrom, i, n, c0);
-    else  pagerankAitkenCalculate(a, r, c, vfrom, efrom, i, n, c0);  // assume contribtions (c) is precalculated
-    T el = pagerankError(a, r, i, n, EF); ++l;                       // one iteration complete
-    if (el<E || l>=L) break;                                         // check tolerance, iteration limit
-    multiply(c, a, f, i, n);                                         // update partial contributions (c)
-    swap(a, r);                                                      // final ranks always in (a)
+    if (l==0 || l%AS!=0) pagerankCalculate(a, c, vfrom, efrom, i, n, c0);
+    else pagerankAitkenCalculate(a, r, c, vfrom, efrom, i, n, c0);  // assume contribtions (c) is precalculated
+    T el = pagerankError(a, r, i, n, EF); ++l;                      // one iteration complete
+    if (el<E || l>=L) break;                                        // check tolerance, iteration limit
+    multiply(c, a, f, i, n);                                        // update partial contributions (c)
+    swap(a, r);                                                     // final ranks always in (a)
   }
   return l;
 }

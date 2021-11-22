@@ -14,7 +14,7 @@ display(FileLink(out))
 !echo ""
 
 # Run
-!g++ -O3 $src/main.cxx
+!g++ -std=c++17 -O3 $src/main.cxx
 !ulimit -s unlimited && stdbuf --output=L ./a.out $inp/min-1DeadEnd.mtx      2>&1 | tee -a "$out"
 !ulimit -s unlimited && stdbuf --output=L ./a.out $inp/min-2SCC.mtx          2>&1 | tee -a "$out"
 !ulimit -s unlimited && stdbuf --output=L ./a.out $inp/min-4SCC.mtx          2>&1 | tee -a "$out"
