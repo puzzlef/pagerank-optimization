@@ -11,6 +11,8 @@
 using std::vector;
 using std::swap;
 using std::abs;
+using std::min;
+using std::max;
 
 
 
@@ -20,13 +22,20 @@ using std::abs;
 // For rank calculation from in-edges.
 
 template <class T>
-void pagerankAitkenCalculate(vector<T>& a, const vector<T>& r, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, T c0) {
-  const T DE = 1e-16;                                 // if denominator smaller than this, dont use aitken interpolation!
+T extrapolateAitken(T x2, T x1, T x0, T DE) {
+  T de = (x2-x1)-(x1-x0);                           // aitken denominator
+  return abs(de)<DE? x2 : x2 - (x2-x1)*(x2-x1)/de;  // aitken extrapolate, only if denominator not too small!
+}
+
+template <class T>
+void pagerankAitkenCalculate(vector<T>& a, vector<T>& x2, const vector<T>& x1, const vector<T>& x0, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, T c0) {
+  const T DE = 1e-16;                                                          // if denominator smaller than this, dont use aitken extrapolation!
   for (int v=i; v<i+n; v++) {
-    T x0 = a[v], x1 = r[v], x2 = c0 + sumAt(c, sliceIter(efrom, vfrom[v], vfrom[v+1]));
-    T de = (x2-x1) - (x1-x0);                         // aitken denominator
-    a[v] = abs(de)<DE? x2 : x2 - (x2-x1)*(x2-x1)/de;  // aitken interpolate, only if denominator not too small!
+    x2[v] = c0 + sumAt(c, sliceIter(efrom, vfrom[v], vfrom[v+1]));
+    a[v]  = min(max(extrapolateAitken(x2[v], x1[v], x0[v], DE), T(0)), T(1));  // ranks must be within limit!
   }
+  // printf("x2: "); println(x2);
+  // printf("a:  "); println(a);
 }
 
 
@@ -36,16 +45,16 @@ void pagerankAitkenCalculate(vector<T>& a, const vector<T>& r, const vector<T>& 
 // -------------
 
 template <class T>
-int pagerankAitkenLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int N, T p, T E, int L, int EF, int AS) {
-  T  c0 = (1-p)/N;
+int pagerankAitkenLoop(vector<T>& a, vector<T>& r, vector<T>& x2, vector<T>& x1, vector<T>& x0, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int i, int n, int N, T p, T E, int L, int EF, int AS) {
   int l = 0;
   while (l<L) {
-    if (l==0 || l%AS!=0) pagerankCalculate(a, c, vfrom, efrom, i, n, c0);
-    else pagerankAitkenCalculate(a, r, c, vfrom, efrom, i, n, c0);  // assume contribtions (c) is precalculated
-    T el = pagerankError(a, r, i, n, EF); ++l;                      // one iteration complete
-    if (el<E || l>=L) break;                                        // check tolerance, iteration limit
-    multiply(c, a, f, i, n);                                        // update partial contributions (c)
-    swap(a, r);                                                     // final ranks always in (a)
+    T c0 = pagerankTeleport(r, vdata, N, p);
+    if (l<2 || l%AS!=0) { pagerankCalculate(x2, c, vfrom, efrom, i, n, c0); copy(a, x2); }
+    else pagerankAitkenCalculate(a, x2, x1, x0, c, vfrom, efrom, i, n, c0);  // assume contribtions (c) is precalculated
+    T el = pagerankError(a, r, i, n, EF); ++l;                               // one iteration complete
+    if (el<E || l>=L) break;                                                 // check tolerance, iteration limit
+    multiply(c, a, f, i, n);                                                 // update partial contributions (c)
+    swap(a, r); swap(x0, x1); swap(x1, x2);                                  // final ranks always in (a)
   }
   return l;
 }

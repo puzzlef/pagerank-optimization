@@ -28,6 +28,21 @@ void pagerankFactor(vector<T>& a, const vector<int>& vdata, int i, int n, T p) {
 
 
 
+// PAGERANK-TELEPORT
+// -----------------
+// For teleport contribution from vertices (inc. dead ends).
+
+template <class T>
+T pagerankTeleport(const vector<T>& r, const vector<int>& vdata, int N, T p) {
+  T a = (1-p)/N;
+  for (int u=0; u<N; u++)
+    if (vdata[u] == 0) a += p*r[u]/N;
+  return a;
+}
+
+
+
+
 // PAGERANK-CALCULATE
 // ------------------
 // For rank calculation from in-edges.
@@ -72,14 +87,14 @@ PagerankResult<T> pagerankSeq(const H& xt, const J& ks, int i, const M& ns, FL f
   auto vfrom = sourceOffsets(xt, ks);
   auto efrom = destinationIndices(xt, ks);
   auto vdata = vertexData(xt, ks);
-  vector<T> a(N), r(N), c(N), f(N), qc;
+  vector<T> a(N), r(N), x2(N), x1(N), x0(N), c(N), f(N), qc;
   if (q) qc = compressContainer(xt, *q, ks);
   float t = measureDurationMarked([&](auto mark) {
     if (q) copy(r, qc);    // copy old ranks (qc), if given
     else fill(r, T(1)/N);
-    copy(a, r);
-    mark([&] { pagerankFactor(f, vdata, 0, N, p); multiply(c, a, f, 0, N); });   // calculate factors (f) and contributions (c)
-    mark([&] { l = fl(a, r, c, f, vfrom, efrom, i, ns, N, p, E, L, EF, AS); });  // calculate ranks of vertices
+    copy(a, r); copy(x0, r); copy(x1, r); copy(x2, r);
+    mark([&] { pagerankFactor(f, vdata, 0, N, p); multiply(c, a, f, 0, N); });               // calculate factors (f) and contributions (c)
+    mark([&] { l = fl(a, r, x2, x1, x0, c, f, vfrom, efrom, vdata, i, ns, N, p, E, L, EF, AS); });  // calculate ranks of vertices
   }, o.repeat);
   return {decompressContainer(xt, a, ks), l, t};
 }
