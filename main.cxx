@@ -25,6 +25,13 @@ void runPagerank(const G& x, const H& xt, int repeat) {
     auto e2 = l1Norm(a2.ranks, a1.ranks);
     printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankAitken [aitken-step=%d]\n", a2.time, a2.iterations, e2, AS);
   }
+
+  // Find pagerank using power-iteration based PageRank with Aitken extrapolation (random).
+  for (int AS=1; AS<=64; AS*=2) {
+    auto a3 = pagerankAitkenRandom(x, xt, init, {repeat, L1, AS});
+    auto e3 = l1Norm(a3.ranks, a1.ranks);
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankAitkenRandom [aitken-step=%d]\n", a3.time, a3.iterations, e3, AS);
+  }
 }
 
 

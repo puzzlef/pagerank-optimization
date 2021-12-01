@@ -17,3 +17,4 @@
 #include "pagerankSeq.hxx"
 #include "pagerankPlain.hxx"
 #include "pagerankAitken.hxx"
+#include "pagerankAitkenRandom.hxx"
