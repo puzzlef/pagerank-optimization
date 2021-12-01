@@ -17,15 +17,15 @@ using std::swap;
 // -------------
 
 template <class T>
-int pagerankPlainLoop(vector<T>& a, vector<T>& r, vector<T>& x2, vector<T>& x1, vector<T>& x0, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int i, int n, int N, T p, T E, int L, int EF, int AS) {
+int pagerankPlainLoop(vector<T>& r2, vector<T>& r1, vector<T>& r0, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int i, int n, int N, T p, T E, int L, int EF, int AS) {
   int l = 0;
   while (l<L) {
-    T c0 = pagerankTeleport(r, vdata, N, p);
-    pagerankCalculate(a, c, vfrom, efrom, i, n, c0);  // assume contribtions (c) is precalculated
-    T el = pagerankError(a, r, i, n, EF); ++l;        // one iteration complete
-    if (el<E || l>=L) break;                          // check tolerance, iteration limit
-    multiply(c, a, f, i, n);                          // update partial contributions (c)
-    swap(a, r);                                       // final ranks always in (a)
+    T c0 = pagerankTeleport(r1, vdata, N, p);
+    pagerankCalculate(r2, c, vfrom, efrom, i, n, c0);  // assume contribtions (c) is precalculated
+    T el = pagerankError(r2, r1, i, n, EF); ++l;       // one iteration complete
+    if (el<E || l>=L) break;                           // check tolerance, iteration limit
+    multiply(c, r2, f, i, n);                          // update partial contributions (c)
+    swap(r0, r1); swap(r1, r2);                        // final ranks always in (r2)
   }
   return l;
 }

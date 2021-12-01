@@ -28,14 +28,12 @@ T extrapolateAitken(T x2, T x1, T x0, T DE) {
 }
 
 template <class T>
-void pagerankAitkenCalculate(vector<T>& a, vector<T>& x2, const vector<T>& x1, const vector<T>& x0, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, T c0) {
+void pagerankAitkenCalculate(vector<T>& a, vector<T>& r2, const vector<T>& r1, const vector<T>& r0, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, T c0) {
   const T DE = 1e-16;                                                          // if denominator smaller than this, dont use aitken extrapolation!
   for (int v=i; v<i+n; v++) {
-    x2[v] = c0 + sumAt(c, sliceIter(efrom, vfrom[v], vfrom[v+1]));
-    a[v]  = min(max(extrapolateAitken(x2[v], x1[v], x0[v], DE), T(0)), T(1));  // ranks must be within limit!
+    r2[v] = c0 + sumAt(c, sliceIter(efrom, vfrom[v], vfrom[v+1]));
+    a[v]  = min(max(extrapolateAitken(r2[v], r1[v], r0[v], DE), T(0)), T(1));  // ranks must be within limit!
   }
-  // printf("x2: "); println(x2);
-  // printf("a:  "); println(a);
 }
 
 
@@ -45,16 +43,17 @@ void pagerankAitkenCalculate(vector<T>& a, vector<T>& x2, const vector<T>& x1, c
 // -------------
 
 template <class T>
-int pagerankAitkenLoop(vector<T>& a, vector<T>& r, vector<T>& x2, vector<T>& x1, vector<T>& x0, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int i, int n, int N, T p, T E, int L, int EF, int AS) {
-  int l = 0;
+int pagerankAitkenLoop(vector<T>& r2, vector<T>& r1, vector<T>& r0, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int i, int n, int N, T p, T E, int L, int EF, int AS) {
+  int l  = 0;
+  int AL = AS+1;
   while (l<L) {
-    T c0 = pagerankTeleport(r, vdata, N, p);
-    if (l<2 || l%AS!=0) { pagerankCalculate(x2, c, vfrom, efrom, i, n, c0); copy(a, x2); }
-    else pagerankAitkenCalculate(a, x2, x1, x0, c, vfrom, efrom, i, n, c0);  // assume contribtions (c) is precalculated
-    T el = pagerankError(a, r, i, n, EF); ++l;                               // one iteration complete
-    if (el<E || l>=L) break;                                                 // check tolerance, iteration limit
-    multiply(c, a, f, i, n);                                                 // update partial contributions (c)
-    swap(a, r); swap(x0, x1); swap(x1, x2);                                  // final ranks always in (a)
+    T c0 = pagerankTeleport(r1, vdata, N, p); ++l;          // one iteration starting
+    if (l%AL==0) { pagerankAitkenCalculate(r0, r2, r1, r0, c, vfrom, efrom, i, n, c0); swap(r1, r2); swap(r2, r0); }
+    else pagerankCalculate(r2, c, vfrom, efrom, i, n, c0);  // assume contribtions (c) is precalculated
+    T el = pagerankError(r2, r1, i, n, EF);                 // one iteration complete
+    if (el<E || l>=L) break;                                // check tolerance, iteration limit
+    multiply(c, r2, f, i, n);                               // update partial contributions (c)
+    swap(r0, r1); swap(r1, r2);                             // final ranks always in (r2)
   }
   return l;
 }

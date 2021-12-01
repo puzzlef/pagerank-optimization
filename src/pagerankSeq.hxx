@@ -87,14 +87,14 @@ PagerankResult<T> pagerankSeq(const H& xt, const J& ks, int i, const M& ns, FL f
   auto vfrom = sourceOffsets(xt, ks);
   auto efrom = destinationIndices(xt, ks);
   auto vdata = vertexData(xt, ks);
-  vector<T> a(N), r(N), x2(N), x1(N), x0(N), c(N), f(N), qc;
+  vector<T> r2(N), r1(N), r0(N), c(N), f(N), qc;
   if (q) qc = compressContainer(xt, *q, ks);
   float t = measureDurationMarked([&](auto mark) {
-    if (q) copy(r, qc);    // copy old ranks (qc), if given
-    else fill(r, T(1)/N);
-    copy(a, r); copy(x0, r); copy(x1, r); copy(x2, r);
-    mark([&] { pagerankFactor(f, vdata, 0, N, p); multiply(c, a, f, 0, N); });               // calculate factors (f) and contributions (c)
-    mark([&] { l = fl(a, r, x2, x1, x0, c, f, vfrom, efrom, vdata, i, ns, N, p, E, L, EF, AS); });  // calculate ranks of vertices
+    if (q) copy(r0, qc);    // copy old ranks (qc), if given
+    else fill(r0, T(1)/N);
+    copy(r1, r0); copy(r2, r0);
+    mark([&] { pagerankFactor(f, vdata, 0, N, p); multiply(c, r2, f, 0, N); });               // calculate factors (f) and contributions (c)
+    mark([&] { l = fl(r2, r1, r0, c, f, vfrom, efrom, vdata, i, ns, N, p, E, L, EF, AS); });  // calculate ranks of vertices
   }, o.repeat);
-  return {decompressContainer(xt, a, ks), l, t};
+  return {decompressContainer(xt, r2, ks), l, t};
 }
