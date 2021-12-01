@@ -34,6 +34,8 @@ void pagerankAitkenCalculate(vector<T>& a, vector<T>& r2, const vector<T>& r1, c
     r2[v] = c0 + sumAt(c, sliceIter(efrom, vfrom[v], vfrom[v+1]));
     a[v]  = min(max(extrapolateAitken(r2[v], r1[v], r0[v], DE), T(0)), T(1));  // ranks must be within limit!
   }
+  printf("r2: "); println(r2);
+  printf("a:  "); println(a);
 }
 
 
