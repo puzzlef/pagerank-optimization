@@ -93,8 +93,8 @@ PagerankResult<T> pagerankSeq(const H& xt, const J& ks, int i, const M& ns, FL f
     if (q) copy(r0, qc);    // copy old ranks (qc), if given
     else fill(r0, T(1)/N);
     copy(r1, r0); copy(r2, r0);
-    mark([&] { pagerankFactor(f, vdata, 0, N, p); multiply(c, r2, f, 0, N); });               // calculate factors (f) and contributions (c)
-    mark([&] { l = fl(r2, r1, r0, c, f, vfrom, efrom, vdata, i, ns, N, p, E, L, EF, AS); });  // calculate ranks of vertices
+    mark([&] { pagerankFactor(f, vdata, 0, N, p); multiply(c, r2, f, 0, N); });                // calculate factors (f) and contributions (c)
+    mark([&] { l += fl(r2, r1, r0, c, f, vfrom, efrom, vdata, i, ns, N, p, E, L, EF, AS); });  // calculate ranks of vertices
   }, o.repeat);
-  return {decompressContainer(xt, r2, ks), l, t};
+  return {decompressContainer(xt, r2, ks), l/o.repeat, t};                                     // get average iterations!
 }
