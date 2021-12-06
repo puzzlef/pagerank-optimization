@@ -17,11 +17,12 @@ using std::swap;
 // -------------
 
 template <class T>
-int pagerankMonolithicSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int i, int n, int N, T p, T E, int L, int EF) {
+int pagerankMonolithicSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, const vector2d<int>& vidnt, int i, int n, int N, T p, T E, int L, int EF) {
   int l = 0;
   while (l<L) {
     T c0 = pagerankTeleport(r, vdata, N, p);
     pagerankCalculate(a, c, vfrom, efrom, i, n, c0);  // assume contribtions (c) is precalculated
+    pagerankCalculateIdenticals(a, vidnt);
     T el = pagerankError(a, r, i, n, EF); ++l;        // one iteration complete
     if (el<E || l>=L) break;                          // check tolerance, iteration limit
     multiply(c, a, f, i, n);                          // update partial contributions (c)
