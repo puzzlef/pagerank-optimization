@@ -1,5 +1,7 @@
 Performance benefit of PageRank with vertices **split by components** ([pull], [CSR]).
 
+`TODO!`
+
 This experiment was for comparing performance between:
 1. Find pagerank **without optimization**.
 2. Find pagerank with vertices **split by components**.
