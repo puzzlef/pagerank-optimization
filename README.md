@@ -1,17 +1,29 @@
-Performance benefit of PageRank with vertices **split by components** ([pull], [CSR]).
-
-`TODO!`
+Performance benefit of PageRank with vertices **split by components**
+([pull], [CSR]).
 
 This experiment was for comparing performance between:
-1. Find pagerank **without optimization**.
-2. Find pagerank with vertices **split by components**.
-3. Find pagerank with components **sorted in topological order**.
+1. Find PageRank **without optimization**.
+2. Find PageRank with vertices **split by components**.
+3. Find PageRank with components **sorted in topological order**.
 
-Each approach was attempted on a number of graphs, running each approach 5
-times to get a good time measure. On **road networks** and **web graphs**,
-**splitting vertices by components** provides a **speedup**, but *sorting*
-*components in topological order* provides *no additional speedup*. For road
-networks, like `germany_osm` which only have *one component*, the speedup is
+Each approach was attempted on a number of graphs, running each approach 5 times
+to get a good time measure. It seems **splitting vertices by components**
+**decreases execution time by 0-38%**, when compared to no optimization. This
+speedup is mostly observed on **road networks** and **web graphs**. However,
+sorting components in topological order seems to provide negligible additional
+speedup. With respect to **GM-RATIO**, *splitting vertices by components*
+completes in **13% less time (1.15x)** than using default vertex order. Sorting
+components in topological order provides no additional improvement. With respect
+to **AM-RATIO**, *splitting vertices by components* completes in **14% less time
+(1.16x)** than using default vertex order. *Sorting components in topological
+order*  completes in **15% less time (1.18x)** than using default vertex order.
+The speedup associated with *splitting of vertices by components* could be
+attributed to an *increase in cache hit ratio* when accessing the rank vector
+for PageRank computation. This is because when vertices are grouped by
+components, the ranks of vertices in each component would be close together. As
+edges within a component tend to be higher than cross component edges, ranks of
+in-edge vertices are more likely to be found in the cache. For road networks,
+like `germany_osm` which only have *one connected component*, the speedup is
 possibly because of the *vertex reordering* caused by `dfs()` which is required
 for splitting by components.
 
@@ -50,8 +62,8 @@ $ ...
 # ...
 ```
 
-[![](https://i.imgur.com/8oT4ZeQ.png)][sheetp]
-[![](https://i.imgur.com/vngyBjn.png)][sheetp]
+[![](https://imgur.com/KirV9Rr.png)][sheetp]
+[![](https://imgur.com/7BxoMX5.png)][sheetp]
 
 <br>
 <br>
@@ -59,8 +71,9 @@ $ ...
 
 ## References
 
-- [STIC-D: algorithmic techniques for efficient parallel pagerank computation on real-world graphs][STIC-D algorithm]
-- [PageRank Algorithm, Mining massive Datasets (CS246), Stanford University](http://snap.stanford.edu/class/cs246-videos-2019/lec9_190205-cs246-720.mp4)
+- [STIC-D: Algorithmic Techniques For Efficient Parallel Pagerank Computation on Real-World Graphs](https://gist.github.com/wolfram77/bb09968cc0e592583c4b180243697d5a)
+- [Adjusting PageRank parameters and Comparing results](https://arxiv.org/abs/2108.02997)
+- [PageRank Algorithm, Mining massive Datasets (CS246), Stanford University](https://www.youtube.com/watch?v=ke9g8hB0MEo)
 - [SuiteSparse Matrix Collection]
 
 <br>
@@ -69,9 +82,8 @@ $ ...
 [![](https://i.imgur.com/z8RKUMF.jpg)](https://www.youtube.com/watch?v=ocTgFXPnTgQ)
 
 [Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
-[Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
-[STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
-[SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
+[Prof. Kishore Kothapalli]: https://www.iiit.ac.in/people/faculty/kkishore/
+[SuiteSparse Matrix Collection]: https://sparse.tamu.edu
 ["graphs"]: https://github.com/puzzlef/graphs
 [pull]: https://github.com/puzzlef/pagerank-push-vs-pull
 [CSR]: https://github.com/puzzlef/pagerank-class-vs-csr
