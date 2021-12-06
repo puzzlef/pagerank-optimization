@@ -24,7 +24,7 @@ from [Prof. Dip Sankar Banerjee] and [Prof. Kishore Kothapalli].
 <br>
 
 ```bash
-$ g++ -O3 main.cxx
+$ g++ -std=c++17 -O3 main.cxx
 $ ./a.out ~/data/min-1DeadEnd.mtx
 $ ./a.out ~/data/min-2SCC.mtx
 $ ...
@@ -34,18 +34,18 @@ $ ...
 # Loading graph /home/subhajit/data/web-Stanford.mtx ...
 # order: 281903 size: 2312497 {}
 # order: 281903 size: 2312497 {} (transposeWithDegree)
-# [00441.055 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
-# [00333.251 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [split]
-# [00331.664 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [split; sort]
+# [00403.016 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+# [00300.035 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [split]
+# [00298.528 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [split; sort]
 #
 # ...
 #
 # Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
 # order: 4847571 size: 68993773 {}
 # order: 4847571 size: 68993773 {} (transposeWithDegree)
-# [11715.982 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
-# [11447.048 ms; 051 iters.] [4.5725e-09 err.] pagerankSeq [split]
-# [11474.953 ms; 051 iters.] [4.5754e-09 err.] pagerankSeq [split; sort]
+# [12250.154 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
+# [11770.011 ms; 051 iters.] [4.5725e-09 err.] pagerankSeq [split]
+# [11760.936 ms; 051 iters.] [4.5754e-09 err.] pagerankSeq [split; sort]
 #
 # ...
 ```
