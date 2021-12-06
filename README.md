@@ -1,18 +1,20 @@
 Performance benefit of **skipping in-identical vertices** for PageRank ([pull], [CSR]).
 
-`TODO!`
-
 This experiment was for comparing performance between:
 1. Find pagerank **without optimization**.
 2. Find pagerank **skipping rank calculation of in-identical vertices**.
 
-Each approach was attempted on a number of graphs, running each approach 5
-times to get a good time measure. On `indochina-2004` graph, **skipping**
-**in-identicals** provides a **speedup** of `~1.8`, but on average provides
-*no speedup* for other graphs. This could be due to the fact that the graph
-`indochina-2004` has a large number of **inidenticals** and **inidentical**
-**groups**, although it doesnt have the highest **inidentials %** or the
-highest **avg. inidentical group size**.
+Each approach was attempted on a number of graphs, running each approach 5 times
+to get a good time measure. It seems **skipping in-identicals** **decreases
+execution time by 0-43%**, when compared to no optimization. This speedup is
+mainly observed on `indochina-2004`, and hardly any on the other graphs. With
+respect to **GM-RATIO**, *skipping in-identicals* completes in **2% less time
+(1.02x)** than using default approach. With respect to **AM-RATIO**, *skipping
+in-identicals* completes in **12% less time (1.14x)** than using default
+approach. This speedup could be due to the fact that the graph `indochina-2004`
+has a large number of **inidenticals** and **inidentical** **groups**, although
+it doesnt have the highest **inidentials %** or the highest **avg. inidentical
+group size**.
 
 All outputs are saved in [out](out/) and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
@@ -49,11 +51,11 @@ $ ...
 # ...
 ```
 
-[![](https://i.imgur.com/3Oxkf5S.png)][sheetp]
-[![](https://i.imgur.com/VxzsPvV.png)][sheetp]
-[![](https://i.imgur.com/3TECQBr.png)][sheetp]
-[![](https://i.imgur.com/RDSls8E.png)][sheetp]
-[![](https://i.imgur.com/ZspbF1F.png)][sheetp]
+[![](https://imgur.com/siwAucr.png)][sheetp]
+[![](https://imgur.com/HQxgXSv.png)][sheetp]
+[![](https://imgur.com/DOmYkzx.png)][sheetp]
+[![](https://imgur.com/jQVAZ62.png)][sheetp]
+[![](https://imgur.com/1rx7NdI.png)][sheetp]
 
 <br>
 <br>
