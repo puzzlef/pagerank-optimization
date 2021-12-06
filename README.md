@@ -1,5 +1,7 @@
 Performance benefit of **skipping in-identical vertices** for PageRank ([pull], [CSR]).
 
+`TODO!`
+
 This experiment was for comparing performance between:
 1. Find pagerank **without optimization**.
 2. Find pagerank **skipping rank calculation of in-identical vertices**.
@@ -21,7 +23,7 @@ from [Prof. Dip Sankar Banerjee] and [Prof. Kishore Kothapalli].
 <br>
 
 ```bash
-$ g++ -O3 main.cxx
+$ g++ -std=c++17 -O3 main.cxx
 $ ./a.out ~/data/min-1DeadEnd.mtx
 $ ./a.out ~/data/min-2SCC.mtx
 $ ...
@@ -32,8 +34,8 @@ $ ...
 # order: 281903 size: 2312497 {}
 # order: 281903 size: 2312497 {} (transposeWithDegree)
 # inidenticals: 80096 inidentical-groups: 13684 {}
-# [00442.164 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
-# [00441.829 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+# [00430.553 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+# [00436.046 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 #
 # ...
 #
@@ -41,8 +43,8 @@ $ ...
 # order: 7414866 size: 194109311 {}
 # order: 7414866 size: 194109311 {} (transposeWithDegree)
 # inidenticals: 3812336 inidentical-groups: 536482 {}
-# [20319.572 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq
-# [11503.846 ms; 061 iters.] [7.3308e-07 err.] pagerankSeq [skip]
+# [20494.613 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq
+# [11604.845 ms; 061 iters.] [7.3308e-07 err.] pagerankSeq [skip]
 #
 # ...
 ```
@@ -59,8 +61,9 @@ $ ...
 
 ## References
 
-- [STIC-D: algorithmic techniques for efficient parallel pagerank computation on real-world graphs][STIC-D algorithm]
-- [PageRank Algorithm, Mining massive Datasets (CS246), Stanford University](http://snap.stanford.edu/class/cs246-videos-2019/lec9_190205-cs246-720.mp4)
+- [STIC-D: Algorithmic Techniques For Efficient Parallel Pagerank Computation on Real-World Graphs](https://gist.github.com/wolfram77/bb09968cc0e592583c4b180243697d5a)
+- [Adjusting PageRank parameters and Comparing results](https://arxiv.org/abs/2108.02997)
+- [PageRank Algorithm, Mining massive Datasets (CS246), Stanford University](https://www.youtube.com/watch?v=ke9g8hB0MEo)
 - [SuiteSparse Matrix Collection]
 
 <br>
@@ -69,9 +72,8 @@ $ ...
 [![](https://i.imgur.com/Z7oiZSS.jpg)](https://www.youtube.com/watch?v=rKv_l1RnSqs)
 
 [Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
-[Prof. Kishore Kothapalli]: https://cstar.iiit.ac.in/~kkishore/
-[STIC-D algorithm]: https://www.slideshare.net/SubhajitSahu/sticd-algorithmic-techniques-for-efficient-parallel-pagerank-computation-on-realworld-graphs
-[SuiteSparse Matrix Collection]: https://suitesparse-collection-website.herokuapp.com
+[Prof. Kishore Kothapalli]: https://www.iiit.ac.in/people/faculty/kkishore/
+[SuiteSparse Matrix Collection]: https://sparse.tamu.edu
 ["graphs"]: https://github.com/puzzlef/graphs
 [pull]: https://github.com/puzzlef/pagerank-push-vs-pull
 [CSR]: https://github.com/puzzlef/pagerank-class-vs-csr

@@ -2,22 +2,22 @@ Loading graph /home/subhajit/data/min-1DeadEnd.mtx ...
 order: 5 size: 6 {}
 order: 5 size: 6 {} (transposeWithDegree)
 inidenticals: 2 inidentical-groups: 1 {}
-[00000.002 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq
-[00000.002 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00000.001 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq
+[00000.001 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/min-2SCC.mtx ...
 order: 8 size: 12 {}
 order: 8 size: 12 {} (transposeWithDegree)
 inidenticals: 0 inidentical-groups: 0 {}
-[00000.002 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq
-[00000.002 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00000.006 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq
+[00000.006 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/min-4SCC.mtx ...
 order: 21 size: 35 {}
 order: 21 size: 35 {} (transposeWithDegree)
 inidenticals: 0 inidentical-groups: 0 {}
-[00000.006 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq
-[00000.006 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00000.011 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq
+[00000.011 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/min-NvgraphEx.mtx ...
 order: 6 size: 10 {}
@@ -30,117 +30,117 @@ Loading graph /home/subhajit/data/web-Stanford.mtx ...
 order: 281903 size: 2312497 {}
 order: 281903 size: 2312497 {} (transposeWithDegree)
 inidenticals: 80096 inidentical-groups: 13684 {}
-[00442.164 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
-[00441.829 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00430.553 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+[00436.046 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/web-BerkStan.mtx ...
 order: 685230 size: 7600595 {}
 order: 685230 size: 7600595 {} (transposeWithDegree)
 inidenticals: 234190 inidentical-groups: 43599 {}
-[00981.755 ms; 064 iters.] [0.0000e+00 err.] pagerankSeq
-[00954.236 ms; 064 iters.] [1.8561e-07 err.] pagerankSeq [skip]
+[00913.558 ms; 064 iters.] [0.0000e+00 err.] pagerankSeq
+[00906.169 ms; 064 iters.] [1.8561e-07 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/web-Google.mtx ...
 order: 916428 size: 5105039 {}
 order: 916428 size: 5105039 {} (transposeWithDegree)
 inidenticals: 301399 inidentical-groups: 73849 {}
-[01613.890 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq
-[01687.892 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[01560.154 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq
+[01632.194 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/web-NotreDame.mtx ...
 order: 325729 size: 1497134 {}
 order: 325729 size: 1497134 {} (transposeWithDegree)
 inidenticals: 225252 inidentical-groups: 23318 {}
-[00247.573 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq
-[00257.050 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00226.850 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq
+[00239.093 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/soc-Slashdot0811.mtx ...
 order: 77360 size: 905468 {}
 order: 77360 size: 905468 {} (transposeWithDegree)
 inidenticals: 473 inidentical-groups: 227 {}
-[00096.545 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq
-[00096.621 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00096.463 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq
+[00096.782 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/soc-Slashdot0902.mtx ...
 order: 82168 size: 948464 {}
 order: 82168 size: 948464 {} (transposeWithDegree)
 inidenticals: 616 inidentical-groups: 295 {}
-[00112.865 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq
-[00110.355 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00105.401 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq
+[00107.234 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/soc-Epinions1.mtx ...
 order: 75888 size: 508837 {}
 order: 75888 size: 508837 {} (transposeWithDegree)
 inidenticals: 16924 inidentical-groups: 3904 {}
-[00085.946 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq
-[00088.965 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00078.564 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq
+[00081.706 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/coAuthorsDBLP.mtx ...
 order: 299067 size: 1955352 {}
 order: 299067 size: 1955352 {} (transposeWithDegree)
 inidenticals: 32219 inidentical-groups: 11965 {}
-[00259.327 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq
-[00264.977 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00243.967 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq
+[00248.788 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/coAuthorsCiteseer.mtx ...
 order: 227320 size: 1628268 {}
 order: 227320 size: 1628268 {} (transposeWithDegree)
 inidenticals: 18909 inidentical-groups: 7346 {}
-[00211.444 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq
-[00211.983 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00195.151 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq
+[00195.164 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
 order: 4847571 size: 68993773 {}
 order: 4847571 size: 68993773 {} (transposeWithDegree)
 inidenticals: 556210 inidentical-groups: 203669 {}
-[11935.981 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
-[12386.734 ms; 051 iters.] [2.3422e-08 err.] pagerankSeq [skip]
+[13832.977 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
+[13596.818 ms; 051 iters.] [2.3422e-08 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/coPapersCiteseer.mtx ...
 order: 434102 size: 32073440 {}
 order: 434102 size: 32073440 {} (transposeWithDegree)
 inidenticals: 428 inidentical-groups: 207 {}
-[02299.839 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
-[02301.983 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[02314.167 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
+[02297.407 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/coPapersDBLP.mtx ...
 order: 540486 size: 30491458 {}
 order: 540486 size: 30491458 {} (transposeWithDegree)
 inidenticals: 545 inidentical-groups: 264 {}
-[02180.044 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq
-[02178.106 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[02206.198 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq
+[02203.533 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/indochina-2004.mtx ...
 order: 7414866 size: 194109311 {}
 order: 7414866 size: 194109311 {} (transposeWithDegree)
 inidenticals: 3812336 inidentical-groups: 536482 {}
-[20319.572 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq
-[11503.846 ms; 061 iters.] [7.3308e-07 err.] pagerankSeq [skip]
+[20494.613 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq
+[11604.845 ms; 061 iters.] [7.3308e-07 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/italy_osm.mtx ...
 order: 6686493 size: 14027956 {}
 order: 6686493 size: 14027956 {} (transposeWithDegree)
 inidenticals: 14711 inidentical-groups: 7268 {}
-[04744.956 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
-[04644.657 ms; 063 iters.] [2.9492e-08 err.] pagerankSeq [skip]
+[04986.012 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+[04979.377 ms; 063 iters.] [2.9492e-08 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/great-britain_osm.mtx ...
 order: 7733822 size: 16313034 {}
 order: 7733822 size: 16313034 {} (transposeWithDegree)
 inidenticals: 150274 inidentical-groups: 74837 {}
-[07551.615 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq
-[07687.116 ms; 067 iters.] [3.7064e-08 err.] pagerankSeq [skip]
+[07818.640 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq
+[07846.573 ms; 067 iters.] [3.7064e-08 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/germany_osm.mtx ...
 order: 11548845 size: 24738362 {}
 order: 11548845 size: 24738362 {} (transposeWithDegree)
 inidenticals: 73324 inidentical-groups: 36401 {}
-[12123.167 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq
-[12440.987 ms; 065 iters.] [3.4755e-08 err.] pagerankSeq [skip]
+[13034.127 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq
+[12997.908 ms; 065 iters.] [3.4755e-08 err.] pagerankSeq [skip]
 
 Loading graph /home/subhajit/data/asia_osm.mtx ...
 order: 11950757 size: 25423206 {}
 order: 11950757 size: 25423206 {} (transposeWithDegree)
 inidenticals: 38011 inidentical-groups: 18734 {}
-[08894.849 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
-[09026.534 ms; 063 iters.] [2.9904e-08 err.] pagerankSeq [skip]
+[09545.227 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+[09407.562 ms; 063 iters.] [2.9904e-08 err.] pagerankSeq [skip]
