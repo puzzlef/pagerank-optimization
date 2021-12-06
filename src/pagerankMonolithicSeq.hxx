@@ -47,7 +47,7 @@ template <class G, class H, class T=float>
 PagerankResult<T> pagerankMonolithicSeq(const G& x, const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
   int  N  = xt.order();    if (N==0) return PagerankResult<T>::initial(xt, q);
   auto ks = vertices(xt);
-  return pagerankSeq(xt, ks, 0, N, pagerankMonolithicSeqLoop<T>, q, o);
+  return pagerankSeq(x, xt, ks, 0, N, pagerankMonolithicSeqLoop<T>, q, o);
 }
 
 template <class G, class T=float>
@@ -66,7 +66,7 @@ template <class G, class H, class T=float>
 PagerankResult<T> pagerankMonolithicSeqDynamic(const G& x, const H& xt, const G& y, const H& yt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
   int  N = yt.order();                           if (N==0) return PagerankResult<T>::initial(yt, q);
   auto [ks, n] = dynamicVertices(x, xt, y, yt);  if (n==0) return PagerankResult<T>::initial(yt, q);
-  return pagerankSeq(yt, ks, 0, n, pagerankMonolithicSeqLoop<T>, q, o);
+  return pagerankSeq(y, yt, ks, 0, n, pagerankMonolithicSeqLoop<T>, q, o);
 }
 
 template <class G, class T=float>
