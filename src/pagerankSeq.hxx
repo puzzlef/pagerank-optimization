@@ -47,10 +47,30 @@ T pagerankTeleport(const vector<T>& r, const vector<int>& vdata, int N, T p) {
 // ------------------
 // For rank calculation from in-edges.
 
+// Default.
 template <class T>
 void pagerankCalculate(vector<T>& a, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, T c0) {
   for (int v=i; v<i+n; v++)
-    a[v] = c0 + sumAt(c, sliceIter(efrom, vfrom[v], vfrom[v+1]));
+    a[v] = c0 + sumAt(c, slice(efrom, vfrom[v], vfrom[v+1]));
+}
+
+// Skip converged for SC-1 turns.
+template <class T>
+void pagerankCalculate(vector<T>& a, const vector<T>& r, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int l, int SC, T c0) {
+  for (int v=i;v<i+n; v++) {
+    if (a[v]==r[v] && l%SC!=0) continue;
+    a[v] = c0 + sumAt(c, slice(efrom, vfrom[v], vfrom[v+1]));
+  }
+}
+
+// Skip if converged for SA turns.
+template <class T>
+void pagerankCalculate(vector<T>& a, vector<int>& s, const vector<T>& r, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int SA, T c0) {
+  for (int v=i;v<i+n; v++) {
+    if (s[v]>=SA) continue;
+    a[v] = c0 + sumAt(c, slice(efrom, vfrom[v], vfrom[v+1]));
+    if (a[v]==r[v]) s[v]++;
+  }
 }
 
 
@@ -83,17 +103,21 @@ PagerankResult<T> pagerankSeq(const H& xt, const J& ks, int i, const M& ns, FL f
   T    E  = o.tolerance;
   int  L  = o.maxIterations, l = 0;
   int  EF = o.toleranceNorm;
+  int  SC = o.skipCheck;
+  int  SA = o.skipAfter;
   auto vfrom = sourceOffsets(xt, ks);
   auto efrom = destinationIndices(xt, ks);
   auto vdata = vertexData(xt, ks);
+  vector<int> s(N);
   vector<T> a(N), r(N), c(N), f(N), qc;
   if (q) qc = compressContainer(xt, *q, ks);
   float t = measureDurationMarked([&](auto mark) {
+    fill(s, int());
     if (q) copy(r, qc);    // copy old ranks (qc), if given
     else fill(r, T(1)/N);
     copy(a, r);
-    mark([&] { pagerankFactor(f, vdata, 0, N, p); multiply(c, a, f, 0, N); });      // calculate factors (f) and contributions (c)
-    mark([&] { l = fl(a, r, c, f, vfrom, efrom, vdata, i, ns, N, p, E, L, EF); });  // calculate ranks of vertices
+    mark([&] { pagerankFactor(f, vdata, 0, N, p); multiply(c, a, f, 0, N); });                 // calculate factors (f) and contributions (c)
+    mark([&] { l = fl(a, r, s, c, f, vfrom, efrom, vdata, i, ns, N, p, E, L, EF, SC, SA); });  // calculate ranks of vertices
   }, o.repeat);
   return {decompressContainer(xt, a, ks), l, t};
 }

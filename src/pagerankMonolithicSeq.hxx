@@ -48,15 +48,17 @@ auto pagerankDynamicVertices(const G& x, const H& xt, const G& y, const H& yt, c
 // -------------
 
 template <class T>
-int pagerankMonolithicSeqLoop(vector<T>& a, vector<T>& r, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int i, int n, int N, T p, T E, int L, int EF) {
+int pagerankMonolithicSeqLoop(vector<T>& a, vector<T>& r, vector<int>& s, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int i, int n, int N, T p, T E, int L, int EF, int SC, int SA) {
   int l = 0;
   while (l<L) {
     T c0 = pagerankTeleport(r, vdata, N, p);
-    pagerankCalculate(a, c, vfrom, efrom, i, n, c0);  // assume contribtions (c) is precalculated
-    T el = pagerankError(a, r, i, n, EF); ++l;        // one iteration complete
-    if (el<E || l>=L) break;                          // check tolerance, iteration limit
-    multiply(c, a, f, i, n);                          // update partial contributions (c)
-    swap(a, r);                                       // final ranks always in (a)
+    if (SC>0) pagerankCalculate(a, r, c, vfrom, efrom, i, n, l, SC, c0);
+    else if (SA>0) pagerankCalculate(a, s, r, c, vfrom, efrom, i, n, SA, c0);
+    else pagerankCalculate(a, c, vfrom, efrom, i, n, c0);  // assume contribtions (c) is precalculated
+    T el = pagerankError(a, r, i, n, EF); ++l;             // one iteration complete
+    if (el<E || l>=L) break;                               // check tolerance, iteration limit
+    multiply(c, a, f, i, n);                               // update partial contributions (c)
+    swap(a, r);                                            // final ranks always in (a)
   }
   return l;
 }
