@@ -13,37 +13,6 @@ using std::swap;
 
 
 
-// PAGERANK-COMPONENTS
-// -------------------
-
-template <class G, class H, class T>
-auto pagerankComponents(const G& x, const H& xt, const PagerankOptions<T>& o) {
-  if (!o.splitComponents) return vector2d<int> {vertices(xt)};
-  if (!o.sortComponents)  return components(x, xt);
-  return sortedComponents(x, xt);
-}
-
-
-
-
-// PAGERANK-DYNAMIC-VERTICES
-// -------------------------
-
-template <class G, class H, class T>
-auto pagerankDynamicVertices(const G& x, const H& xt, const G& y, const H& yt, const PagerankOptions<T>& o) {
-  if (!o.splitComponents) return dynamicVertices(x, xt, y, yt);
-  auto cs = components(y, yt);
-  auto b  = blockgraph(y, cs);
-  if (o.sortComponents) sortComponents(cs, b);
-  auto [is, n] = dynamicComponentIndices(x, xt, y, yt, cs, b);
-  auto ks = joinAt(cs, sliceIter(is, 0, n)); int nv = ks.size();
-  joinAt(ks, cs, sliceIter(is, n));
-  return make_pair(ks, nv);
-}
-
-
-
-
 // PAGERANK-LOOP
 // -------------
 
@@ -78,8 +47,7 @@ int pagerankMonolithicSeqLoop(vector<T>& a, vector<T>& r, vector<int>& s, vector
 template <class G, class H, class T=float>
 PagerankResult<T> pagerankMonolithicSeq(const G& x, const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
   int  N  = xt.order();    if (N==0) return PagerankResult<T>::initial(xt, q);
-  auto cs = pagerankComponents(x, xt, o);
-  auto ks = join(cs);
+  auto ks = vertices(xt);
   return pagerankSeq(xt, ks, 0, N, pagerankMonolithicSeqLoop<T>, q, o);
 }
 
@@ -97,8 +65,8 @@ PagerankResult<T> pagerankMonolithicSeq(const G& x, const vector<T> *q=nullptr, 
 
 template <class G, class H, class T=float>
 PagerankResult<T> pagerankMonolithicSeqDynamic(const G& x, const H& xt, const G& y, const H& yt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
-  int  N = yt.order();                                      if (N==0) return PagerankResult<T>::initial(yt, q);
-  auto [ks, n] = pagerankDynamicVertices(x, xt, y, yt, o);  if (n==0) return PagerankResult<T>::initial(yt, q);
+  int  N = yt.order();                           if (N==0) return PagerankResult<T>::initial(yt, q);
+  auto [ks, n] = dynamicVertices(x, xt, y, yt);  if (n==0) return PagerankResult<T>::initial(yt, q);
   return pagerankSeq(yt, ks, 0, n, pagerankMonolithicSeqLoop<T>, q, o);
 }
 
