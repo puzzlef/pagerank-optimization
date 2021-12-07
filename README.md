@@ -34,7 +34,7 @@ from [Prof. Dip Sankar Banerjee] and [Prof. Kishore Kothapalli].
 <br>
 
 ```bash
-$ g++ -O3 main.cxx
+$ g++ -std=c++17 -O3 main.cxx
 $ ./a.out ~/data/min-1DeadEnd.mtx
 $ ./a.out ~/data/min-2SCC.mtx
 $ ...
