@@ -34,8 +34,8 @@ $ ...
 # order: 281903 size: 2312497 {}
 # order: 281903 size: 2312497 {} (transposeWithDegree)
 # chains: 3618 chain-vertices: 3885 {}
-# [00466.614 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
-# [00466.725 ms; 063 iters.] [1.6226e-09 err.] pagerankSeq [skip]
+# [00430.875 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+# [00434.419 ms; 063 iters.] [1.6226e-09 err.] pagerankSeq [skip]
 #
 # ...
 #
@@ -43,8 +43,8 @@ $ ...
 # order: 4847571 size: 68993773 {}
 # order: 4847571 size: 68993773 {} (transposeWithDegree)
 # chains: 15788 chain-vertices: 16297 {}
-# [13037.498 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
-# [12704.751 ms; 051 iters.] [5.1436e-11 err.] pagerankSeq [skip]
+# [17937.842 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
+# [18056.332 ms; 051 iters.] [5.1436e-11 err.] pagerankSeq [skip]
 #
 # ...
 ```
