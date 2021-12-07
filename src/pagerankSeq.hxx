@@ -5,11 +5,37 @@
 #include "vertices.hxx"
 #include "edges.hxx"
 #include "csr.hxx"
+#include "chains.hxx"
 #include "pagerank.hxx"
 
 using std::vector;
 using std::swap;
 
+
+
+
+// PAGERANK-CHAINS
+// ---------------
+
+template <class G, class H, class J, class T>
+auto pagerankChains(const G& x, const H& xt, const J& ks, const PagerankOptions<T>& o) {
+  if (!o.skipChains) return vector2d<int>();
+  auto id = indices(ks);
+  auto a  = chains(x, xt);
+  for (auto& vs : a) {
+    for (int i=0; i<vs.size(); i++)
+      vs[i] = id[vs[i]];
+  }
+  return a;
+}
+
+
+void pagerankMarkChains(vector<int>& vfrom, const vector2d<int>& vchin) {
+  for (const auto& vs : vchin) {
+    for (int i=1; i<vs.size(); i++)
+      vfrom[vs[i]] = -abs(vfrom[vs[i]]);
+  }
+}
 
 
 
@@ -49,8 +75,21 @@ T pagerankTeleport(const vector<T>& r, const vector<int>& vdata, int N, T p) {
 
 template <class T>
 void pagerankCalculate(vector<T>& a, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, T c0) {
-  for (int v=i; v<i+n; v++)
+  for (int v=i; v<i+n; v++) {
+    if (vfrom[v]<0) continue;
     a[v] = c0 + sumAt(c, sliceIter(efrom, vfrom[v], vfrom[v+1]));
+  }
+}
+
+
+template <class T>
+void pagerankCalculateChains(vector<T>& a, const vector<T>& r, const vector2d<int>& vchin, T p, T c0) {
+  for (const auto& vs : vchin) {
+    for (int i=1; i<vs.size(); i++) {
+      T pi = pow(p, i);
+      a[vs[i]] = ((1-pi)/(1-p)) * c0 + pi * r[vs[0]];
+    }
+  }
 }
 
 
@@ -76,8 +115,8 @@ T pagerankError(const vector<T>& x, const vector<T>& y, int i, int N, int EF) {
 // --------
 // For Monolithic / Levelwise PageRank.
 
-template <class H, class J, class M, class FL, class T=float>
-PagerankResult<T> pagerankSeq(const H& xt, const J& ks, int i, const M& ns, FL fl, const vector<T> *q, const PagerankOptions<T>& o) {
+template <class G, class H, class J, class M, class FL, class T=float>
+PagerankResult<T> pagerankSeq(const G& x, const H& xt, const J& ks, int i, const M& ns, FL fl, const vector<T> *q, const PagerankOptions<T>& o) {
   int  N  = xt.order();
   T    p  = o.damping;
   T    E  = o.tolerance;
@@ -86,14 +125,16 @@ PagerankResult<T> pagerankSeq(const H& xt, const J& ks, int i, const M& ns, FL f
   auto vfrom = sourceOffsets(xt, ks);
   auto efrom = destinationIndices(xt, ks);
   auto vdata = vertexData(xt, ks);
+  auto vchin = pagerankChains(x, xt, ks, o);
+  pagerankMarkChains(vfrom, vchin);
   vector<T> a(N), r(N), c(N), f(N), qc;
   if (q) qc = compressContainer(xt, *q, ks);
   float t = measureDurationMarked([&](auto mark) {
     if (q) copy(r, qc);    // copy old ranks (qc), if given
     else fill(r, T(1)/N);
     copy(a, r);
-    mark([&] { pagerankFactor(f, vdata, 0, N, p); multiply(c, a, f, 0, N); });      // calculate factors (f) and contributions (c)
-    mark([&] { l = fl(a, r, c, f, vfrom, efrom, vdata, i, ns, N, p, E, L, EF); });  // calculate ranks of vertices
+    mark([&] { pagerankFactor(f, vdata, 0, N, p); multiply(c, a, f, 0, N); });             // calculate factors (f) and contributions (c)
+    mark([&] { l = fl(a, r, c, f, vfrom, efrom, vdata, vchin, i, ns, N, p, E, L, EF); });  // calculate ranks of vertices
   }, o.repeat);
   return {decompressContainer(xt, a, ks), l, t};
 }
