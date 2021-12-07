@@ -1,4 +1,5 @@
 #pragma once
+#include <cmath>
 #include <vector>
 #include <algorithm>
 #include "_main.hxx"
@@ -10,6 +11,7 @@
 
 using std::vector;
 using std::swap;
+using std::abs;
 
 
 
@@ -77,7 +79,7 @@ template <class T>
 void pagerankCalculate(vector<T>& a, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, T c0) {
   for (int v=i; v<i+n; v++) {
     if (vfrom[v]<0) continue;
-    a[v] = c0 + sumAt(c, sliceIter(efrom, vfrom[v], vfrom[v+1]));
+    a[v] = c0 + sumAt(c, sliceIter(efrom, abs(vfrom[v]), abs(vfrom[v+1])));
   }
 }
 
