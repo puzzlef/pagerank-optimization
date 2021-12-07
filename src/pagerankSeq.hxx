@@ -56,7 +56,7 @@ void pagerankCalculate(vector<T>& a, const vector<T>& c, const vector<int>& vfro
 
 // Skip converged for SC-1 turns.
 template <class T>
-void pagerankCalculate(vector<T>& a, const vector<T>& r, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int l, int SC, T c0) {
+void pagerankCalculateSkipCheck(vector<T>& a, const vector<T>& r, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int l, int SC, T c0) {
   for (int v=i;v<i+n; v++) {
     if (a[v]==r[v] && l%SC!=0) continue;
     a[v] = c0 + sumAt(c, sliceIter(efrom, vfrom[v], vfrom[v+1]));
@@ -65,7 +65,7 @@ void pagerankCalculate(vector<T>& a, const vector<T>& r, const vector<T>& c, con
 
 // Skip if converged for SA turns.
 template <class T>
-void pagerankCalculate(vector<T>& a, vector<int>& s, const vector<T>& r, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int SA, T c0) {
+void pagerankCalculateSkipAfter(vector<T>& a, vector<int>& s, const vector<T>& r, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int SA, T c0) {
   for (int v=i;v<i+n; v++) {
     if (s[v]>=SA) continue;
     a[v] = c0 + sumAt(c, sliceIter(efrom, vfrom[v], vfrom[v+1]));

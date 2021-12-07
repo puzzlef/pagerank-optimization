@@ -21,8 +21,8 @@ int pagerankMonolithicSeqLoop(vector<T>& a, vector<T>& r, vector<int>& s, vector
   int l = 0;
   while (l<L) {
     T c0 = pagerankTeleport(r, vdata, N, p);
-    if (SC>0) pagerankCalculate(a, r, c, vfrom, efrom, i, n, l, SC, c0);
-    else if (SA>0) pagerankCalculate(a, s, r, c, vfrom, efrom, i, n, SA, c0);
+    if (SC>0) pagerankCalculateSkipCheck(a, r, c, vfrom, efrom, i, n, l, SC, c0);
+    else if (SA>0) pagerankCalculateSkipAfter(a, s, r, c, vfrom, efrom, i, n, SA, c0);
     else pagerankCalculate(a, c, vfrom, efrom, i, n, c0);  // assume contribtions (c) is precalculated
     T el = pagerankError(a, r, i, n, EF); ++l;             // one iteration complete
     if (el<E || l>=L) break;                               // check tolerance, iteration limit
