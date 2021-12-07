@@ -13,22 +13,9 @@ using std::swap;
 
 
 
-template <class G, class H, class T>
-auto pagerankComponents(const G& x, const H& xt, const PagerankOptions<T>& o) {
-  if (o.sortComponents) return sortedComponents(x, xt);
-  else if (o.splitComponents) return components(x, xt);
-  return vector2d<int> {vertices(xt)};
-}
-
-
-template <class T>
-T pagerankTeleport(const vector<T>& r, const vector<int>& vdata, int i, int n, int N, T p) {
-  T a = (1-p)/N;
-  for (int v=i; v<i+n; v++)
-    if (vdata[v] == 0) a += p*r[v]/N;
-  return a;
-}
-
+// PAGERANK-FACTOR
+// ---------------
+// For contribution factors of vertices (unchanging).
 
 template <class T>
 void pagerankFactor(vector<T>& a, const vector<int>& vdata, int i, int n, T p) {
@@ -39,75 +26,74 @@ void pagerankFactor(vector<T>& a, const vector<int>& vdata, int i, int n, T p) {
 }
 
 
-// Default.
+
+
+// PAGERANK-TELEPORT
+// -----------------
+// For teleport contribution from vertices (inc. dead ends).
+
+template <class T>
+T pagerankTeleport(const vector<T>& r, const vector<int>& vdata, int N, T p) {
+  T a = (1-p)/N;
+  for (int u=0; u<N; u++)
+    if (vdata[u] == 0) a += p*r[u]/N;
+  return a;
+}
+
+
+
+
+// PAGERANK-CALCULATE
+// ------------------
+// For rank calculation from in-edges.
+
 template <class T>
 void pagerankCalculate(vector<T>& a, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, T c0) {
   for (int v=i; v<i+n; v++)
-    a[v] = c0 + sumAt(c, slice(efrom, vfrom[v], vfrom[v+1]));
+    a[v] = c0 + sumAt(c, sliceIter(efrom, vfrom[v], vfrom[v+1]));
 }
 
-// Skip converged for SC-1 turns.
+
+
+
+// PAGERANK-ERROR
+// --------------
+// For convergence check.
+
 template <class T>
-void pagerankCalculate(vector<T>& a, const vector<T>& r, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int l, int SC, T c0) {
-  for (int v=i;v<i+n; v++) {
-    if (a[v]==r[v] && l%SC!=0) continue;
-    a[v] = c0 + sumAt(c, slice(efrom, vfrom[v], vfrom[v+1]));
+T pagerankError(const vector<T>& x, const vector<T>& y, int i, int N, int EF) {
+  switch (EF) {
+    case 1:  return l1Norm(x, y, i, N);
+    case 2:  return l2Norm(x, y, i, N);
+    default: return liNorm(x, y, i, N);
   }
 }
 
-// Skip if converged for SA turns.
-template <class T>
-void pagerankCalculate(vector<T>& a, vector<int>& s, const vector<T>& r, const vector<T>& c, const vector<int>& vfrom, const vector<int>& efrom, int i, int n, int SA, T c0) {
-  for (int v=i;v<i+n; v++) {
-    if (s[v]>=SA) continue;
-    a[v] = c0 + sumAt(c, slice(efrom, vfrom[v], vfrom[v+1]));
-    if (a[v]==r[v]) s[v]++;
-  }
-}
 
 
-template <class T>
-int pagerankSeqLoop(vector<T>& a, vector<T>& r, vector<int>& s, vector<T>& c, const vector<T>& f, const vector<int>& vfrom, const vector<int>& efrom, const vector<int>& vdata, int i, int n, int N, T p, T E, int L, int SC, int SA) {
-  int l = 1;
-  for (; l<L; l++) {
-    T c0 = pagerankTeleport(r, vdata, 0, N, N, p);
-    multiply(c, r, f, i, n);
-    if (SC>0) pagerankCalculate(a, r, c, vfrom, efrom, i, n, l, SC, c0);
-    else if (SA>0) pagerankCalculate(a, s, r, c, vfrom, efrom, i, n, SA, c0);
-    else pagerankCalculate(a, c, vfrom, efrom, i, n, c0);
-    T el = l1Norm(a, r, i, n);
-    if (el < E) break;
-    swap(a, r);
-  }
-  return l;
-}
 
+// PAGERANK
+// --------
+// For Monolithic / Levelwise PageRank.
 
-// Find pagerank using a single thread (pull, CSR).
-// @param xt transpose graph, with vertex-data=out-degree
-// @param q initial ranks (optional)
-// @param o options {damping=0.85, tolerance=1e-6, maxIterations=500}
-// @returns {ranks, iterations, time}
-template <class H, class T=float>
-PagerankResult<T> pagerankSeq(const H& xt, const vector<T> *q=nullptr, PagerankOptions<T> o={}) {
-  int  N = xt.order();
-  T    p = o.damping;
-  T    E = o.tolerance;
-  int  L = o.maxIterations, l;
-  int SC = o.skipCheck;
-  int SA = o.skipAfter;
-  auto vfrom = sourceOffsets(xt);
-  auto efrom = destinationIndices(xt);
-  auto vdata = vertexData(xt);
-  vector<int> s(N);
-  vector<T> a(N), r(N), c(N), f(N);
+template <class H, class J, class M, class FL, class T=float>
+PagerankResult<T> pagerankSeq(const H& xt, const J& ks, int i, const M& ns, FL fl, const vector<T> *q, const PagerankOptions<T>& o) {
+  int  N  = xt.order();
+  T    p  = o.damping;
+  T    E  = o.tolerance;
+  int  L  = o.maxIterations, l = 0;
+  int  EF = o.toleranceNorm;
+  auto vfrom = sourceOffsets(xt, ks);
+  auto efrom = destinationIndices(xt, ks);
+  auto vdata = vertexData(xt, ks);
+  vector<T> a(N), r(N), c(N), f(N), qc;
+  if (q) qc = compressContainer(xt, *q, ks);
   float t = measureDurationMarked([&](auto mark) {
-    fill(a, T());
-    if (q) r = compressContainer(xt, *q);
+    if (q) copy(r, qc);    // copy old ranks (qc), if given
     else fill(r, T(1)/N);
-    fill(s, int());
-    mark([&] { pagerankFactor(f, vdata, 0, N, p); });
-    mark([&] { l = pagerankSeqLoop(a, r, s, c, f, vfrom, efrom, vdata, 0, N, N, p, E, L, SC, SA); });
+    copy(a, r);
+    mark([&] { pagerankFactor(f, vdata, 0, N, p); multiply(c, a, f, 0, N); });      // calculate factors (f) and contributions (c)
+    mark([&] { l = fl(a, r, c, f, vfrom, efrom, vdata, i, ns, N, p, E, L, EF); });  // calculate ranks of vertices
   }, o.repeat);
-  return {decompressContainer(xt, a), l, t};
+  return {decompressContainer(xt, a, ks), l, t};
 }
