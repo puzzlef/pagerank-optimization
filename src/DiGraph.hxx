@@ -41,12 +41,12 @@ class DiGraph {
 
   bool hasVertex(int u)      const { return u < s() && vex[u]; }
   bool hasEdge(int u, int v) const { return u < s() && ei(u, v) >= 0; }
-  auto edges(int u)          const { return u < s()? iterable(vto[u]) : iterable(none); }
+  auto edges(int u)          const { return u < s()? makeIter(vto[u]) : makeIter(none); }
   int degree(int u)          const { return u < s()? vto[u].size()    : 0; }
-  auto vertices()      const { return filter(range(s()), [&](int u) { return  vex[u]; }); }
-  auto nonVertices()   const { return filter(range(s()), [&](int u) { return !vex[u]; }); }
-  auto inEdges(int v)  const { return filter(range(s()), [&](int u) { return ei(u, v) >= 0; }); }
-  int inDegree(int v) const { return countIf(range(s()), [&](int u) { return ei(u, v) >= 0; }); }
+  auto vertices()      const { return filterIter(rangeIter(s()), [&](int u) { return  vex[u]; }); }
+  auto nonVertices()   const { return filterIter(rangeIter(s()), [&](int u) { return !vex[u]; }); }
+  auto inEdges(int v)  const { return filterIter(rangeIter(s()), [&](int u) { return ei(u, v) >= 0; }); }
+  int inDegree(int v) const { return countIf(rangeIter(s()), [&](int u) { return ei(u, v) >= 0; }); }
 
   V vertexData(int u)   const { return hasVertex(u)? vdata[u] : V(); }
   void setVertexData(int u, V d) { if (hasVertex(u)) vdata[u] = d; }
