@@ -15,7 +15,7 @@ void runPagerank(const G& x, const H& xt, int repeat) {
   bool skipInidenticals = true;
 
   // Find in-identicals.
-  auto is = inIdenticals(x, xt);
+  auto is = edgeIdenticals(xt);
   printf("inidenticals: %d inidentical-groups: %d {}\n", size2d(is), size(is));
 
   // Find pagerank without optimization.

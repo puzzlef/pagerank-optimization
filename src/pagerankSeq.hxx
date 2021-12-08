@@ -22,7 +22,7 @@ template <class G, class H, class J, class T>
 auto pagerankIdenticals(const G& x, const H& xt, const J& ks, const PagerankOptions<T>& o) {
   if (!o.skipInidenticals) return vector2d<int>();
   auto id = indices(ks);
-  auto a  = inIdenticals(x, xt);
+  auto a  = edgeIdenticals(xt, ks);
   for (auto& vs : a) {
     for (int i=0; i<vs.size(); i++)
       vs[i] = id[vs[i]];
