@@ -12,11 +12,6 @@ template <class G, class H>
 void runPagerank(const G& x, const H& xt, int repeat) {
   enum NormFunction { L0=0, L1=1, L2=2, Li=3 };
   vector<float> *init = nullptr;
-  bool skipChains = true;
-
-  // Find chains.
-  auto ch = chains(x, xt);
-  printf("chains: %d chain-vertices: %d {}\n", size(ch), size2d(ch));
 
   // Find pagerank without optimization.
   auto a1 = pagerankMonolithicSeq(x, xt, init, {repeat, L1});
@@ -24,9 +19,12 @@ void runPagerank(const G& x, const H& xt, int repeat) {
   printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankSeq\n", a1.time, a1.iterations, e1);
 
   // Find pagerank skipping rank calculation of chain vertices.
-  auto a2 = pagerankMonolithicSeq(x, xt, init, {repeat, L1, skipChains});
-  auto e2 = l1Norm(a2.ranks, a1.ranks);
-  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankSeq [skip]\n", a2.time, a2.iterations, e2);
+  for (int SC=2; SC<=256; SC*=2) {
+    auto ch = chainsFromSize(x, xt, SC);
+    auto a2 = pagerankMonolithicSeq(x, xt, init, {repeat, L1, SC});
+    auto e2 = l1Norm(a2.ranks, a1.ranks);
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankSeq [skip-chains=%03d; chain-vertices=%08d; chains: %08d]\n", a2.time, a2.iterations, e2, SC, size2d(ch), size(ch));
+  }
 }
 
 
