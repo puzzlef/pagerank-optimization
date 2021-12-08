@@ -33,18 +33,30 @@ $ ...
 # Loading graph /home/subhajit/data/web-Stanford.mtx ...
 # order: 281903 size: 2312497 {}
 # order: 281903 size: 2312497 {} (transposeWithDegree)
-# chains: 3618 chain-vertices: 3885 {}
-# [00430.875 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
-# [00434.419 ms; 063 iters.] [1.6226e-09 err.] pagerankSeq [skip]
+# [00443.403 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+# [00436.523 ms; 063 iters.] [1.7376e-09 err.] pagerankSeq [skip-chains=002; chain-vertices=00001265; chains=00000575]
+# [00445.141 ms; 063 iters.] [1.1369e-11 err.] pagerankSeq [skip-chains=004; chain-vertices=00000051; chains=00000002]
+# [00433.567 ms; 063 iters.] [1.1369e-11 err.] pagerankSeq [skip-chains=008; chain-vertices=00000051; chains=00000002]
+# [00438.725 ms; 063 iters.] [1.1369e-11 err.] pagerankSeq [skip-chains=016; chain-vertices=00000051; chains=00000002]
+# [00435.385 ms; 063 iters.] [1.0004e-11 err.] pagerankSeq [skip-chains=032; chain-vertices=00000034; chains=00000001]
+# [00437.912 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+# [00435.215 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+# [00438.292 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 #
 # ...
 #
 # Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
 # order: 4847571 size: 68993773 {}
 # order: 4847571 size: 68993773 {} (transposeWithDegree)
-# chains: 15788 chain-vertices: 16297 {}
-# [17937.842 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
-# [18056.332 ms; 051 iters.] [5.1436e-11 err.] pagerankSeq [skip]
+# [12951.940 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
+# [12891.713 ms; 051 iters.] [4.0809e-09 err.] pagerankSeq [skip-chains=002; chain-vertices=00015182; chains=00007435]
+# [12888.291 ms; 051 iters.] [3.2955e-11 err.] pagerankSeq [skip-chains=004; chain-vertices=00000008; chains=00000002]
+# [12854.885 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+# [12844.854 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+# [12837.034 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+# [12882.533 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+# [12927.814 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+# [13207.755 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 #
 # ...
 ```

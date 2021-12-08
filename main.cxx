@@ -23,7 +23,7 @@ void runPagerank(const G& x, const H& xt, int repeat) {
     auto ch = chainsFromSize(x, xt, SC);
     auto a2 = pagerankMonolithicSeq(x, xt, init, {repeat, L1, SC});
     auto e2 = l1Norm(a2.ranks, a1.ranks);
-    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankSeq [skip-chains=%03d; chain-vertices=%08d; chains: %08d]\n", a2.time, a2.iterations, e2, SC, size2d(ch), size(ch));
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankSeq [skip-chains=%03d; chain-vertices=%08d; chains=%08d]\n", a2.time, a2.iterations, e2, SC, size2d(ch), size(ch));
   }
 }
 

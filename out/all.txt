@@ -1,146 +1,272 @@
 Loading graph /home/subhajit/data/min-1DeadEnd.mtx ...
 order: 5 size: 6 {}
 order: 5 size: 6 {} (transposeWithDegree)
-chains: 1 chain-vertices: 1 {}
-[00000.002 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq
-[00000.002 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00000.000 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq
+[00000.000 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000000; chains=00000000]
+[00000.000 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[00000.000 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[00000.000 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[00000.000 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[00000.000 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[00000.000 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[00000.000 ms; 017 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/min-2SCC.mtx ...
 order: 8 size: 12 {}
 order: 8 size: 12 {} (transposeWithDegree)
-chains: 2 chain-vertices: 3 {}
-[00000.007 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq
-[00000.012 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00000.005 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq
+[00000.008 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000002; chains=00000001]
+[00000.005 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[00000.005 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[00000.005 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[00000.005 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[00000.005 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[00000.005 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[00000.005 ms; 040 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/min-4SCC.mtx ...
 order: 21 size: 35 {}
 order: 21 size: 35 {} (transposeWithDegree)
-chains: 1 chain-vertices: 1 {}
-[00000.019 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq
-[00000.019 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00000.007 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq
+[00000.010 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000006; chains=00000003]
+[00000.007 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[00000.007 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[00000.007 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[00000.007 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[00000.007 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[00000.007 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[00000.007 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/min-NvgraphEx.mtx ...
 order: 6 size: 10 {}
 order: 6 size: 10 {} (transposeWithDegree)
-chains: 0 chain-vertices: 0 {}
-[00000.003 ms; 024 iters.] [0.0000e+00 err.] pagerankSeq
-[00000.004 ms; 024 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00000.001 ms; 024 iters.] [0.0000e+00 err.] pagerankSeq
+[00000.001 ms; 024 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000000; chains=00000000]
+[00000.001 ms; 024 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[00000.001 ms; 024 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[00000.001 ms; 024 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[00000.001 ms; 024 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[00000.001 ms; 024 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[00000.001 ms; 024 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[00000.001 ms; 024 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/web-Stanford.mtx ...
 order: 281903 size: 2312497 {}
 order: 281903 size: 2312497 {} (transposeWithDegree)
-chains: 3618 chain-vertices: 3885 {}
-[00430.875 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
-[00434.419 ms; 063 iters.] [1.6226e-09 err.] pagerankSeq [skip]
+[00443.403 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+[00436.523 ms; 063 iters.] [1.7376e-09 err.] pagerankSeq [skip-chains=002; chain-vertices=00001265; chains=00000575]
+[00445.141 ms; 063 iters.] [1.1369e-11 err.] pagerankSeq [skip-chains=004; chain-vertices=00000051; chains=00000002]
+[00433.567 ms; 063 iters.] [1.1369e-11 err.] pagerankSeq [skip-chains=008; chain-vertices=00000051; chains=00000002]
+[00438.725 ms; 063 iters.] [1.1369e-11 err.] pagerankSeq [skip-chains=016; chain-vertices=00000051; chains=00000002]
+[00435.385 ms; 063 iters.] [1.0004e-11 err.] pagerankSeq [skip-chains=032; chain-vertices=00000034; chains=00000001]
+[00437.912 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[00435.215 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[00438.292 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/web-BerkStan.mtx ...
 order: 685230 size: 7600595 {}
 order: 685230 size: 7600595 {} (transposeWithDegree)
-chains: 7748 chain-vertices: 8671 {}
-[00971.803 ms; 064 iters.] [0.0000e+00 err.] pagerankSeq
-[00966.251 ms; 064 iters.] [7.0226e-09 err.] pagerankSeq [skip]
+[00941.047 ms; 064 iters.] [0.0000e+00 err.] pagerankSeq
+[00939.722 ms; 064 iters.] [3.0828e-09 err.] pagerankSeq [skip-chains=002; chain-vertices=00003045; chains=00001319]
+[00940.610 ms; 064 iters.] [1.5524e-09 err.] pagerankSeq [skip-chains=004; chain-vertices=00000266; chains=00000024]
+[00939.141 ms; 064 iters.] [1.2287e-09 err.] pagerankSeq [skip-chains=008; chain-vertices=00000197; chains=00000010]
+[00940.229 ms; 064 iters.] [4.6902e-10 err.] pagerankSeq [skip-chains=016; chain-vertices=00000142; chains=00000005]
+[00935.722 ms; 064 iters.] [1.4950e-11 err.] pagerankSeq [skip-chains=032; chain-vertices=00000054; chains=00000001]
+[00943.214 ms; 064 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[00935.890 ms; 064 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[00938.713 ms; 064 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/web-Google.mtx ...
 order: 916428 size: 5105039 {}
 order: 916428 size: 5105039 {} (transposeWithDegree)
-chains: 12381 chain-vertices: 12766 {}
-[01654.091 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq
-[01650.780 ms; 061 iters.] [2.9376e-09 err.] pagerankSeq [skip]
+[01587.434 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq
+[01596.223 ms; 061 iters.] [3.9708e-09 err.] pagerankSeq [skip-chains=002; chain-vertices=00002747; chains=00001330]
+[01586.197 ms; 061 iters.] [1.7403e-09 err.] pagerankSeq [skip-chains=004; chain-vertices=00000022; chains=00000004]
+[01586.560 ms; 061 iters.] [2.3942e-10 err.] pagerankSeq [skip-chains=008; chain-vertices=00000009; chains=00000001]
+[01592.954 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[01610.990 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[01610.933 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[01614.823 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[01617.919 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/web-NotreDame.mtx ...
 order: 325729 size: 1497134 {}
 order: 325729 size: 1497134 {} (transposeWithDegree)
-chains: 2100 chain-vertices: 2513 {}
-[00244.914 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq
-[00247.698 ms; 058 iters.] [1.3747e-08 err.] pagerankSeq [skip]
+[00246.233 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq
+[00246.825 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000982; chains=00000491]
+[00243.924 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[00241.163 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[00239.380 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[00242.115 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[00245.355 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[00244.127 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[00244.565 ms; 058 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/soc-Slashdot0811.mtx ...
 order: 77360 size: 905468 {}
 order: 77360 size: 905468 {} (transposeWithDegree)
-chains: 5 chain-vertices: 5 {}
-[00096.755 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq
-[00097.267 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00096.407 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq
+[00096.508 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000000; chains=00000000]
+[00096.829 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[00096.980 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[00095.953 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[00096.976 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[00095.332 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[00096.836 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[00097.567 ms; 055 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/soc-Slashdot0902.mtx ...
 order: 82168 size: 948464 {}
 order: 82168 size: 948464 {} (transposeWithDegree)
-chains: 4 chain-vertices: 4 {}
-[00103.252 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq
-[00102.911 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00107.251 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq
+[00106.892 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000000; chains=00000000]
+[00106.395 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[00107.129 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[00108.478 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[00106.927 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[00106.193 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[00106.312 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[00105.630 ms; 056 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/soc-Epinions1.mtx ...
 order: 75888 size: 508837 {}
 order: 75888 size: 508837 {} (transposeWithDegree)
-chains: 736 chain-vertices: 751 {}
-[00084.696 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq
-[00084.931 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00084.821 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq
+[00083.539 ms; 054 iters.] [5.2612e-09 err.] pagerankSeq [skip-chains=002; chain-vertices=00001112; chains=00000554]
+[00084.819 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[00085.298 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[00084.860 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[00083.821 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[00082.090 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[00085.351 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[00084.631 ms; 054 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/coAuthorsDBLP.mtx ...
 order: 299067 size: 1955352 {}
 order: 299067 size: 1955352 {} (transposeWithDegree)
-chains: 0 chain-vertices: 0 {}
-[00257.458 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq
-[00257.621 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00258.539 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq
+[00256.811 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000000; chains=00000000]
+[00255.662 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[00257.780 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[00257.916 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[00252.563 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[00253.276 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[00253.281 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[00254.768 ms; 045 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/coAuthorsCiteseer.mtx ...
 order: 227320 size: 1628268 {}
 order: 227320 size: 1628268 {} (transposeWithDegree)
-chains: 0 chain-vertices: 0 {}
-[00206.734 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq
-[00205.868 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[00206.807 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq
+[00205.582 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000000; chains=00000000]
+[00209.385 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[00204.019 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[00204.131 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[00205.174 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[00209.686 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[00206.292 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[00205.952 ms; 048 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/soc-LiveJournal1.mtx ...
 order: 4847571 size: 68993773 {}
 order: 4847571 size: 68993773 {} (transposeWithDegree)
-chains: 15788 chain-vertices: 16297 {}
-[17937.842 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
-[18056.332 ms; 051 iters.] [5.1436e-11 err.] pagerankSeq [skip]
+[12951.940 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
+[12891.713 ms; 051 iters.] [4.0809e-09 err.] pagerankSeq [skip-chains=002; chain-vertices=00015182; chains=00007435]
+[12888.291 ms; 051 iters.] [3.2955e-11 err.] pagerankSeq [skip-chains=004; chain-vertices=00000008; chains=00000002]
+[12854.885 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[12844.854 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[12837.034 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[12882.533 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[12927.814 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[13207.755 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/coPapersCiteseer.mtx ...
 order: 434102 size: 32073440 {}
 order: 434102 size: 32073440 {} (transposeWithDegree)
-chains: 0 chain-vertices: 0 {}
-[02660.399 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
-[02922.521 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[02352.490 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq
+[02320.555 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000000; chains=00000000]
+[02271.114 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[02245.091 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[02231.863 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[02254.231 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[02250.389 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[02243.539 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[02239.374 ms; 051 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/coPapersDBLP.mtx ...
 order: 540486 size: 30491458 {}
 order: 540486 size: 30491458 {} (transposeWithDegree)
-chains: 0 chain-vertices: 0 {}
-[02741.469 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq
-[02353.255 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[02306.301 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq
+[02476.121 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000000; chains=00000000]
+[02270.276 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[02246.974 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[02238.277 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[02247.857 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[02239.430 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[02251.628 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[02237.502 ms; 049 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/indochina-2004.mtx ...
 order: 7414866 size: 194109311 {}
 order: 7414866 size: 194109311 {} (transposeWithDegree)
-chains: 110930 chain-vertices: 116156 {}
-[20724.953 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq
-[20700.178 ms; 061 iters.] [4.6359e-09 err.] pagerankSeq [skip]
+[20708.496 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq
+[20785.162 ms; 061 iters.] [2.5816e-09 err.] pagerankSeq [skip-chains=002; chain-vertices=00021596; chains=00010509]
+[20718.236 ms; 061 iters.] [1.9502e-09 err.] pagerankSeq [skip-chains=004; chain-vertices=00000632; chains=00000115]
+[20698.246 ms; 061 iters.] [6.3293e-10 err.] pagerankSeq [skip-chains=008; chain-vertices=00000148; chains=00000016]
+[20705.816 ms; 061 iters.] [7.5318e-13 err.] pagerankSeq [skip-chains=016; chain-vertices=00000016; chains=00000001]
+[20698.193 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[20708.941 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[20703.373 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[20733.613 ms; 061 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/italy_osm.mtx ...
 order: 6686493 size: 14027956 {}
 order: 6686493 size: 14027956 {} (transposeWithDegree)
-chains: 0 chain-vertices: 0 {}
-[04876.452 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
-[04870.543 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[04929.966 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+[04885.702 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000000; chains=00000000]
+[04878.067 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[04886.443 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[04879.590 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[04887.169 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[04882.960 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[04887.918 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[04879.797 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/great-britain_osm.mtx ...
 order: 7733822 size: 16313034 {}
 order: 7733822 size: 16313034 {} (transposeWithDegree)
-chains: 0 chain-vertices: 0 {}
-[08032.580 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq
-[07997.620 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[07908.840 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq
+[07865.598 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000000; chains=00000000]
+[07865.845 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[07856.060 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[07867.260 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[07862.847 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[07862.281 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[07858.008 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[07857.885 ms; 067 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/germany_osm.mtx ...
 order: 11548845 size: 24738362 {}
 order: 11548845 size: 24738362 {} (transposeWithDegree)
-chains: 0 chain-vertices: 0 {}
-[13294.326 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq
-[13118.900 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[13114.870 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq
+[13013.217 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000000; chains=00000000]
+[13013.498 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[13399.886 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[13391.586 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[15326.445 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[16891.811 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[14362.670 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[12667.775 ms; 065 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
 
 Loading graph /home/subhajit/data/asia_osm.mtx ...
 order: 11950757 size: 25423206 {}
 order: 11950757 size: 25423206 {} (transposeWithDegree)
-chains: 0 chain-vertices: 0 {}
-[09426.601 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
-[09300.074 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip]
+[10593.355 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq
+[09466.547 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=002; chain-vertices=00000000; chains=00000000]
+[09707.900 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=004; chain-vertices=00000000; chains=00000000]
+[09491.479 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=008; chain-vertices=00000000; chains=00000000]
+[09437.471 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=016; chain-vertices=00000000; chains=00000000]
+[09476.099 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=032; chain-vertices=00000000; chains=00000000]
+[09475.712 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=064; chain-vertices=00000000; chains=00000000]
+[09462.977 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=128; chain-vertices=00000000; chains=00000000]
+[09458.893 ms; 063 iters.] [0.0000e+00 err.] pagerankSeq [skip-chains=256; chain-vertices=00000000; chains=00000000]
