@@ -11,12 +11,7 @@ using namespace std;
 template <class G, class H>
 void runPagerank(const G& x, const H& xt, int repeat) {
   enum NormFunction { L0=0, L1=1, L2=2, Li=3 };
-  vector<float> *init   = nullptr;
-  bool skipInidenticals = true;
-
-  // Find in-identicals.
-  auto is = edgeIdenticals(xt);
-  printf("inidenticals: %d inidentical-groups: %d {}\n", size2d(is), size(is));
+  vector<float> *init = nullptr;
 
   // Find pagerank without optimization.
   auto a1 = pagerankMonolithicSeq(x, xt, init, {repeat, L1});
@@ -24,9 +19,12 @@ void runPagerank(const G& x, const H& xt, int repeat) {
   printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankSeq\n", a1.time, a1.iterations, e1);
 
   // Find pagerank skipping rank calculation of in-identical vertices.
-  auto a2 = pagerankMonolithicSeq(x, xt, init, {repeat, L1, skipInidenticals});
-  auto e2 = l1Norm(a2.ranks, a1.ranks);
-  printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankSeq [skip]\n", a2.time, a2.iterations, e2);
+  for (int SI=2; SI<=256; SI*=2) {
+    auto is = edgeIdenticalsFromSize(xt, SI);
+    auto a2 = pagerankMonolithicSeq(x, xt, init, {repeat, L1, SI});
+    auto e2 = l1Norm(a2.ranks, a1.ranks);
+    printf("[%09.3f ms; %03d iters.] [%.4e err.] pagerankSeq [skip-indenticals=%03d; inidenticals=%08d; inidentical-groups=%08d]\n", a2.time, a2.iterations, e2, SI, size2d(is), size(is));
+  }
 }
 
 

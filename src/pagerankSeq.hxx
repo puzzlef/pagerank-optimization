@@ -18,11 +18,11 @@ using std::abs;
 // PAGERANK-IDENTICALS
 // -------------------
 
-template <class G, class H, class J, class T>
-auto pagerankIdenticals(const G& x, const H& xt, const J& ks, const PagerankOptions<T>& o) {
-  if (!o.skipInidenticals) return vector2d<int>();
+template <class G, class H, class J>
+auto pagerankIdenticals(const G& x, const H& xt, const J& ks, int SI) {
+  if (SI==0) return vector2d<int>();
   auto id = indices(ks);
-  auto a  = edgeIdenticals(xt, ks);
+  auto a  = edgeIdenticalsFromSize(xt, ks, SI);
   for (auto& vs : a) {
     for (int i=0; i<vs.size(); i++)
       vs[i] = id[vs[i]];
@@ -122,10 +122,11 @@ PagerankResult<T> pagerankSeq(const G& x, const H& xt, const J& ks, int i, const
   T    E  = o.tolerance;
   int  L  = o.maxIterations, l = 0;
   int  EF = o.toleranceNorm;
+  int  SI = o.skipInidenticals;
   auto vfrom = sourceOffsets(xt, ks);
   auto efrom = destinationIndices(xt, ks);
   auto vdata = vertexData(xt, ks);
-  auto vidnt = pagerankIdenticals(x, xt, ks, o);
+  auto vidnt = pagerankIdenticals(x, xt, ks, SI);
   pagerankMarkIdenticals(vfrom, vidnt);
   vector<T> a(N), r(N), c(N), f(N), qc;
   if (q) qc = compressContainer(xt, *q, ks);
