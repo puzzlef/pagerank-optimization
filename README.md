@@ -1,20 +1,27 @@
 Performance benefit of **skipping in-identical vertices** for PageRank ([pull], [CSR]).
 
 This experiment was for comparing performance between:
-1. Find pagerank **without optimization**.
-2. Find pagerank **skipping rank calculation of in-identical vertices**.
+1. Find PageRank **without optimization**.
+2. Find PageRank **skipping rank calculation of in-identical vertices**.
 
 Each approach was attempted on a number of graphs, running each approach 5 times
-to get a good time measure. It seems **skipping in-identicals** **decreases
-execution time by 0-43%**, when compared to no optimization. This speedup is
-mainly observed on `indochina-2004`, and hardly any on the other graphs. With
-respect to **GM-RATIO**, *skipping in-identicals* completes in **2% less time
-(1.02x)** than using default approach. With respect to **AM-RATIO**, *skipping
-in-identicals* completes in **12% less time (1.14x)** than using default
-approach. This speedup could be due to the fact that the graph `indochina-2004`
-has a large number of **inidenticals** and **inidentical** **groups**, although
-it doesnt have the highest **inidentials %** or the highest **avg. inidentical
-group size**.
+to get a good time measure. The minimum size of *in-identical groups* is varied
+from 2-256, with 2 being the default (`skip2`), and the best among them is also
+picked (`skipbest`). It seems **skipping all in-identicals** *(skip2)*
+**decreases execution time by -36 to 34%**, while **skipping in-identicals with
+best group size or more** *(skipbest)* **decreases execution time by 0 to 34%**,
+when compared to no optimization. This speedup is mainly observed on
+`indochina-2004`, and hardly any on the other graphs. This speedup could be due
+to the fact that the graph `indochina-2004` has a large number of
+**in-identicals** and **in-identical groups**, although it doesn't have the
+highest **in-identicals %** or the highest **avg. in-identical group size**.
+With respect to **GM-RATIO**, *skipping in-identicals (skip2)* completes in **4%
+more time (0.96x)**, and *skipping best in-identicals (skipbest)* completes in
+**4% less time (1.04x)**, than using default approach. With respect to
+**AM-RATIO**, *skipping in-identicals (skip2)* completes in **4% less time
+(1.04x)**, and *skipping best in-identicals (skipbest)* completes in **10% less
+time (1.11x)**, than using default approach. It therefore makes sense to apply
+this optimization only when the graph has a large number of in-identicals.
 
 All outputs are saved in [out](out/) and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
@@ -63,11 +70,11 @@ $ ...
 # ...
 ```
 
-[![](https://imgur.com/siwAucr.png)][sheetp]
-[![](https://imgur.com/HQxgXSv.png)][sheetp]
-[![](https://imgur.com/DOmYkzx.png)][sheetp]
-[![](https://imgur.com/jQVAZ62.png)][sheetp]
-[![](https://imgur.com/1rx7NdI.png)][sheetp]
+[![](https://i.imgur.com/6FHGlfe.png)][sheetp]
+[![](https://i.imgur.com/Ti2UxC6.png)][sheetp]
+[![](https://i.imgur.com/gpegImP.png)][sheetp]
+[![](https://i.imgur.com/4ECJNtM.png)][sheetp]
+[![](https://i.imgur.com/SBgCMEF.png)][sheetp]
 
 <br>
 <br>
