@@ -1,18 +1,28 @@
 Performance benefit of **skipping chain vertices** for PageRank ([pull], [CSR]).
 
-`TODO!`
-
 This experiment was for comparing performance between:
-1. Find pagerank **without optimization**.
-2. Find pagerank **skipping rank calculation of chain vertices**.
+1. Find PageRank **without optimization**.
+2. Find PageRank **skipping rank calculation of chain vertices**.
 
-Each approach was attempted on a number of graphs, running each approach 5
-times to get a good time measure. On average, **skipping chain vertices**
-provides **no speedup**. A **chain** here means a set of *uni-directional*
-*links* connecting one vertex to the next, without any additonal edges.
-*Bi-directional links* are **not** considered as **chains**. Note that most
-graphs don't have enough chains to provide an advantage. Road networks do
-have chains, but they are *bi-directional*, and thus not considered here.
+Each approach was attempted on a number of graphs, running each approach 5 times
+to get a good time measure. The minimum size of *chains* is varied from 2-256,
+with 2 being the default (`skip2`), and the best among them is also picked
+(`skipbest`). A **chain** here means a set of *uni-directional* *links*
+connecting one vertex to the next, without any additional edges. *Bi-directional
+links* are **not** considered as **chains**. Note that most graphs don't have
+enough chains to provide an advantage. Road networks do have chains, but they
+are *bi-directional*, and thus not considered here. It seems **skipping all
+chains** *(skip2)* **decreases execution time by -7 to 11%**, while **skipping
+chains with best group size or more** *(skipbest)* **decreases execution time by
+0 to 11%**, when compared to no optimization. Please note that some other these
+small speedups can be attributed to randomness (execution time has small
+variations). With respect to **GM-RATIO**, *skipping chains (skip2)* and
+*skipping best chains (skipbest)* completes in **1% less time (1.01x)** than
+using default approach. With respect to **AM-RATIO**, *skipping chains (skip2)*
+completes in **2% less time (1.02x)**, and *skipping best chains (skipbest)*
+completes in **3% less time (1.03x)**, than using default approach. It therefore
+makes sense to apply this optimization only when the graph has a large number of
+chains.
 
 All outputs are saved in [out](out/) and a small part of the output is listed
 here. Some [charts] are also included below, generated from [sheets]. The input
@@ -61,11 +71,11 @@ $ ...
 # ...
 ```
 
-[![](https://i.imgur.com/ocpNyOs.png)][sheetp]
-[![](https://i.imgur.com/R1QVC7D.png)][sheetp]
-[![](https://i.imgur.com/TgS8I4z.png)][sheetp]
-[![](https://i.imgur.com/aznJUSc.png)][sheetp]
-[![](https://i.imgur.com/xBrorxU.png)][sheetp]
+[![](https://i.imgur.com/LA07pcz.png)][sheetp]
+[![](https://i.imgur.com/dfAruEl.png)][sheetp]
+[![](https://i.imgur.com/eMpt8BD.png)][sheetp]
+[![](https://i.imgur.com/ekbLFXm.png)][sheetp]
+[![](https://i.imgur.com/QhIw85H.png)][sheetp]
 
 <br>
 <br>
