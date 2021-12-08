@@ -1,27 +1,25 @@
 Performance benefit of **skipping converged vertices** for PageRank ([pull], [CSR]).
 
-`TODO!`
-
 This experiment was for comparing performance between:
-1. Find pagerank **without optimization**.
-2. Find pagerank *skipping converged vertices* **with re-check** (in `2`-`16` turns).
-3. Find pagerank *skipping converged vertices* **after several turns** (in `2`-`64` turns).
+1. Find PageRank **without optimization**.
+2. Find PageRank *skipping converged vertices* **with re-check** (in `2`-`16` turns).
+3. Find PageRank *skipping converged vertices* **after several turns** (in `2`-`64` turns).
 
 Each approach was attempted on a number of graphs, running each approach 5
 times to get a good time measure. **Skip with re-check** (`skip-check`) is
 done every `2`-`16` turns. **Skip after turns** (`skip-after`) is done after
 `2`-`64` turns.
 
-Results indicate that only the `skip-check` optimization is able to provide
-a time reduction in some cases (without introducing too much error).
-- For **web graphs**, a `skip-check` of `8`/`11` appears to work best.
-- For **social networks**, a `skip-check` of `3`/`11` (except for `soc-LiveJournal1`).
-- For **collaboration networks**, a `skip-check` of `2`/`11` (except for `coPapersDBLP`).
-- For **road networks**, `skip-check` provides no improvemnt.
+Results indicate that the optimizations provide an improvement on only a
+few graphs (without introducing too much error):
+- For `web-BerkStan`, a `skip-check` of `11`/`14` appears to work best.
+- For `indochina-2004`, a `skip-check` of `8`/`11`/`14`.
+- For `coPapersDBLP`, a `skip-after` of `3+`.
+- For other graphs, there is no improvement.
 
 On average however, *neither* `skip-check`, nor `skip-after` gives
 **better speed** than the **default (unoptimized) approach** (considering
-the error introduced due to skipping). This could be due to the unnessary
+the error introduced due to skipping). This could be due to the unnecessary
 iterations added by `skip-check` (mistakenly skipped), and increased memory
 accesses performed by `skip-after` (tracking converged count).
 
@@ -74,44 +72,44 @@ $ ...
 # ...
 ```
 
-[![](https://i.imgur.com/cznle2v.png)][sheetp]
-[![](https://i.imgur.com/ZjI78Cs.png)][sheetp]
-[![](https://i.imgur.com/tQDyvmt.png)][sheetp]
-[![](https://i.imgur.com/YDfdPvT.png)][sheetp]
-[![](https://i.imgur.com/gYvoOrR.png)][sheetp]
-[![](https://i.imgur.com/ncwjqsF.png)][sheetp]
-[![](https://i.imgur.com/CM5O5xk.png)][sheetp]
-[![](https://i.imgur.com/K6xwix9.png)][sheetp]
-[![](https://i.imgur.com/pPFgvjv.png)][sheetp]
-[![](https://i.imgur.com/Zk1e6DK.png)][sheetp]
-[![](https://i.imgur.com/IHcNsnD.png)][sheetp]
-[![](https://i.imgur.com/JGsaF5V.png)][sheetp]
-[![](https://i.imgur.com/y5gM9gl.png)][sheetp]
-[![](https://i.imgur.com/ISK2Y2H.png)][sheetp]
-[![](https://i.imgur.com/NOR5AXd.png)][sheetp]
-[![](https://i.imgur.com/4t2DUj6.png)][sheetp]
-[![](https://i.imgur.com/HFj4ekD.png)][sheetp]
-[![](https://i.imgur.com/rbFw4qd.png)][sheetp]
-[![](https://i.imgur.com/OIDxgPG.png)][sheetp]
-[![](https://i.imgur.com/AU6ovly.png)][sheetp]
-[![](https://i.imgur.com/whPdc5q.png)][sheetp]
-[![](https://i.imgur.com/Pv23ADO.png)][sheetp]
-[![](https://i.imgur.com/UcVX2Iw.png)][sheetp]
-[![](https://i.imgur.com/uE4xgar.png)][sheetp]
-[![](https://i.imgur.com/ksKYoJu.png)][sheetp]
-[![](https://i.imgur.com/8XmbumX.png)][sheetp]
-[![](https://i.imgur.com/zqaiNHS.png)][sheetp]
-[![](https://i.imgur.com/2yyzkCe.png)][sheetp]
-[![](https://i.imgur.com/QMhUn6q.png)][sheetp]
-[![](https://i.imgur.com/nFZWD2W.png)][sheetp]
-[![](https://i.imgur.com/t8WY9Oh.png)][sheetp]
-[![](https://i.imgur.com/ayd3Hsy.png)][sheetp]
-[![](https://i.imgur.com/n2qsAWp.png)][sheetp]
-[![](https://i.imgur.com/2LK8Y9V.png)][sheetp]
+[![](https://i.imgur.com/YJ0aDrD.png)][sheetp]
+[![](https://i.imgur.com/cOxymFd.png)][sheetp]
+[![](https://i.imgur.com/v6jamNO.png)][sheetp]
+[![](https://i.imgur.com/sy7cz0R.png)][sheetp]
+[![](https://i.imgur.com/lA5j0sw.png)][sheetp]
+[![](https://i.imgur.com/ks0rnz4.png)][sheetp]
+[![](https://i.imgur.com/biPXzHg.png)][sheetp]
+[![](https://i.imgur.com/R8bjJjp.png)][sheetp]
+[![](https://i.imgur.com/HxMpA3n.png)][sheetp]
+[![](https://i.imgur.com/FJ0kXQA.png)][sheetp]
+[![](https://i.imgur.com/Z2vpeiY.png)][sheetp]
+[![](https://i.imgur.com/LlzD1i3.png)][sheetp]
+[![](https://i.imgur.com/IwB4u95.png)][sheetp]
+[![](https://i.imgur.com/5q0PtWe.png)][sheetp]
+[![](https://i.imgur.com/DAo4Aij.png)][sheetp]
+[![](https://i.imgur.com/pDfLM8C.png)][sheetp]
+[![](https://i.imgur.com/eLlq9WT.png)][sheetp]
+[![](https://i.imgur.com/snpxNKs.png)][sheetp]
+[![](https://i.imgur.com/u34XgO9.png)][sheetp]
+[![](https://i.imgur.com/RFpD0S1.png)][sheetp]
+[![](https://i.imgur.com/i37D992.png)][sheetp]
+[![](https://i.imgur.com/H8DS3NF.png)][sheetp]
+[![](https://i.imgur.com/sh5t6Hd.png)][sheetp]
+[![](https://i.imgur.com/GdFu7Bm.png)][sheetp]
+[![](https://i.imgur.com/mljyVRF.png)][sheetp]
+[![](https://i.imgur.com/CW8APTG.png)][sheetp]
+[![](https://i.imgur.com/MoSHrBC.png)][sheetp]
+[![](https://i.imgur.com/F2yqTf5.png)][sheetp]
+[![](https://i.imgur.com/gqa1kGQ.png)][sheetp]
+[![](https://i.imgur.com/P2IPbdA.png)][sheetp]
+[![](https://i.imgur.com/v4IroAl.png)][sheetp]
+[![](https://i.imgur.com/wBUpfTI.png)][sheetp]
+[![](https://i.imgur.com/RjXtjkd.png)][sheetp]
+[![](https://i.imgur.com/0mWVL8C.png)][sheetp]
 
-[![](https://i.imgur.com/6mwkqae.png)][sheetp]
-[![](https://i.imgur.com/nxLuCFX.png)][sheetp]
-[![](https://i.imgur.com/4mYngoh.png)][sheetp]
+[![](https://i.imgur.com/zq7G4SE.png)][sheetp]
+[![](https://i.imgur.com/073rnPX.png)][sheetp]
+[![](https://i.imgur.com/tZt7WFP.png)][sheetp]
 
 <br>
 <br>
