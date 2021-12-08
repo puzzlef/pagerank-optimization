@@ -19,11 +19,11 @@ using std::abs;
 // PAGERANK-CHAINS
 // ---------------
 
-template <class G, class H, class J, class T>
-auto pagerankChains(const G& x, const H& xt, const J& ks, const PagerankOptions<T>& o) {
-  if (!o.skipChains) return vector2d<int>();
+template <class G, class H, class J>
+auto pagerankChains(const G& x, const H& xt, const J& ks, int SC) {
+  if (SC==0) return vector2d<int>();
+  auto a  = chainsFromSize(x, xt, ks, SC);
   auto id = indices(ks);
-  auto a  = chains(x, xt);
   for (auto& vs : a) {
     for (int i=0; i<vs.size(); i++)
       vs[i] = id[vs[i]];
@@ -124,10 +124,11 @@ PagerankResult<T> pagerankSeq(const G& x, const H& xt, const J& ks, int i, const
   T    E  = o.tolerance;
   int  L  = o.maxIterations, l = 0;
   int  EF = o.toleranceNorm;
+  int  SC = o.skipChains;
   auto vfrom = sourceOffsets(xt, ks);
   auto efrom = destinationIndices(xt, ks);
   auto vdata = vertexData(xt, ks);
-  auto vchin = pagerankChains(x, xt, ks, o);
+  auto vchin = pagerankChains(x, xt, ks, SC);
   pagerankMarkChains(vfrom, vchin);
   vector<T> a(N), r(N), c(N), f(N), qc;
   if (q) qc = compressContainer(xt, *q, ks);
