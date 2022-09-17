@@ -126,6 +126,7 @@ $ ...
 <br>
 
 [![](https://i.imgur.com/KExwVG1.jpg)](https://www.youtube.com/watch?v=A7TKQKAFIi4)
+[![ORG](https://img.shields.io/badge/org-puzzlef-green?logo=Org)](https://puzzlef.github.io)
 [![DOI](https://zenodo.org/badge/380470344.svg)](https://zenodo.org/badge/latestdoi/380470344)
 
 [Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
