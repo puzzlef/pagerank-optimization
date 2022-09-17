@@ -80,6 +80,7 @@ $ ...
 <br>
 
 [![](https://i.imgur.com/z8RKUMF.jpg)](https://www.youtube.com/watch?v=ocTgFXPnTgQ)
+[![ORG](https://img.shields.io/badge/org-puzzlef-green?logo=Org)](https://puzzlef.github.io)
 [![DOI](https://zenodo.org/badge/380449199.svg)](https://zenodo.org/badge/latestdoi/380449199)
 
 [Prof. Dip Sankar Banerjee]: https://sites.google.com/site/dipsankarban/
